@@ -9,12 +9,24 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
+    "@react-router/fs-routes": "^7.1.0",
     "@react-router/node": "^7.1.0",
     "@react-router/serve": "^7.1.0",
+    "@uidotdev/usehooks": "^2.4.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "isbot": "^5.1.17",
+    "jotai": "^2.10.4",
+    "lucide-react": "^0.469.0",
+    "motion": "^11.15.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router": "^7.1.0"
+    "react-router": "^7.1.0",
+    "react-use-measure": "^2.1.1",
+    "recharts": "^2.15.0",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@react-router/dev": "^7.1.0",
