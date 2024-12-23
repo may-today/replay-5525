@@ -41,6 +41,10 @@ const RequestSongsStat: React.FC = () => {
 
   return (
     <div className={clsx(['flex flex-col gap-4 p-4', 'border-2 border-black'])}>
+      <div>
+        <div className="text-xl font-bold">你今年一共听过 <span className="text-3xl">{allListenedRequestSongList.length}</span> 首点歌</div>
+        <div className="text-xl font-bold">占今年点歌数 <span className="text-2xl">{((allListenedRequestSongList.length / allRequestSongList.length) * 100).toFixed(2)}%</span></div>
+      </div>
       <div className="flex flex-wrap gap-2">
         {Object.keys(allRequestSongAmountMap).map((song) => {
           return (
@@ -52,7 +56,8 @@ const RequestSongsStat: React.FC = () => {
                 allListenedRequestSongList.includes(song) ? 'bg-black text-white' : '',
               ])}
             >
-              {song}({allListenedRequestSongAmountMap[song] || 0}/{allRequestSongAmountMap[song] || 0})
+              {song}
+              {/* ({allListenedRequestSongAmountMap[song] || 0}/{allRequestSongAmountMap[song] || 0}) */}
               {Object.keys(allListenedRequestSongAmountMap)?.[0] === song && (
                 <img src={crown} alt="crown" className="absolute -top-6 -right-4 w-10 h-10 rotate-12" />
               )}
