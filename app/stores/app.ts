@@ -1,8 +1,14 @@
 import { atom } from 'jotai'
-import { concertListMap } from '../logic/data'
-import type { Concert } from '../data/types'
+import { concertListMap } from '~/logic/data'
+import { geoCoordMap } from '~/data/geoCoord'
+import type { Concert } from '~/data/types'
 
 export const usernameAtom = atom<string>('')
+export const selectedProvinceAtom = atom<string>('none')
+export const selectedCoordAtom = atom<[number, number] | null>((get) => {
+  const province = get(selectedProvinceAtom)
+  return geoCoordMap[province] || null
+})
 export const selectedConcertDatesAtom = atom<string[]>([])
 export const selectedConcertDetailsAtom = atom<Concert[]>((get) => {
   return Array.from(get(selectedConcertDatesAtom)).map((date) => {
