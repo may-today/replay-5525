@@ -62,7 +62,7 @@ const Submit: React.FC<{ currentStep: 'base' | 'concert'; setCurrentStep: (step:
         )}
         <div
           className={clsx([
-            'flex shrink-0 justify-center items-center',
+            'flex shrink-0 justify-center items-center gap-2',
             'py-4 px-6 rounded-full cursor-pointer text-lg',
             'border-2 border-black bg-black text-white hover:bg-gray-700',
           ])}
@@ -73,10 +73,10 @@ const Submit: React.FC<{ currentStep: 'base' | 'concert'; setCurrentStep: (step:
             }
           }}
         >
-          <ArrowRight />
-          <span className="ml-2">
+          <span>
             {currentStep === 'base' ? '下一步' : '生成观演报告'}
           </span>
+          <ArrowRight />
         </div>
       </div>
       <Toaster />
@@ -156,7 +156,7 @@ const ThanksListDrawer = () => {
               表格；
             </li>
             <li>
-              感谢 开开心心开心果、RingoMango、顽固的老徐🥕、椰子热、圈圈圆圆圆圈圈 等老师在直播编码期间的灵感提供；
+              感谢 开开心心开心果、RingoMango、顽固的老徐🥕、椰子热、圈圈圆圆圆圈圈、蜡笔阿信🥕 等老师在直播编码期间的灵感提供；
             </li>
             <li>感谢 xxx 老师整理的 5525 演唱会 Talking。</li>
           </ul>
