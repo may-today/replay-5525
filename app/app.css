@@ -48,4 +48,17 @@ body {
   }
 }
 
+@layer components {
+  .carousel-item {
+    @apply relative h-full mr-[2px] last:mr-0 basis-full shrink-0 bg-background overflow-y-scroll;
+  }
+}
 
+@layer utilities {
+  .text-report-normal {
+    @apply text-xl font-bold;
+  }
+  .text-report-large {
+    @apply text-3xl font-bold mx-1;
+  }
+}
