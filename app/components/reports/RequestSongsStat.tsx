@@ -40,7 +40,7 @@ const RequestSongsStat: React.FC = () => {
   )
 
   return (
-    <div className={clsx(['flex flex-col gap-4 p-4', 'border-2 border-black'])}>
+    <div className={clsx(['flex flex-col gap-4 p-4'])}>
       <div>
         <div className="text-xl font-bold">你今年一共听过 <span className="text-3xl">{allListenedRequestSongList.length}</span> 首点歌</div>
         <div className="text-xl font-bold">占今年点歌数 <span className="text-2xl">{((allListenedRequestSongList.length / allRequestSongList.length) * 100).toFixed(2)}%</span></div>

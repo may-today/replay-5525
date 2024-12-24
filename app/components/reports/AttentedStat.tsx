@@ -16,11 +16,10 @@ const AttentedStat: React.FC = () => {
   const chartData = getChartData(selectedDates)
 
   return (
-    <div className={clsx(['flex flex-col gap-4 p-4', 'border-2 border-black'])}>
-      <div className="text-2xl font-bold">你参加了</div>
-      <div className="text-2xl font-bold">{selectedDates.length} 场演唱会</div>
-      <div className="text-2xl font-bold">
-        出勤率：{((selectedDates.length / Object.keys(concertListMap).length) * 100).toFixed(2)}%
+    <div className={clsx(['flex flex-col gap-4 p-4'])}>
+      <div>
+        <div className="text-xl font-bold">你参加了<span className="text-2xl">{selectedDates.length}</span> 场演唱会</div>
+        <div className="text-xl font-bold">出勤率 <span className="text-2xl">{((selectedDates.length / Object.keys(concertListMap).length) * 100).toFixed(2)}%</span></div>
       </div>
       <Chart chartData={chartData} />
     </div>

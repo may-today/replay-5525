@@ -17,8 +17,10 @@ export default function HomePage() {
       className={clsx(['mx-auto max-w-screen-md flex flex-col h-dvh overflow-hidden', 'md:border-l-2 md:border-r-2'])}
     >
       <Header />
-      {currentStep === 'base' && <BaseInformationForm />}
-      {currentStep === 'concert' && <ConcertSelectForm />}
+      <div className="flex-1 overflow-y-scroll">
+        {currentStep === 'base' && <BaseInformationForm />}
+        {currentStep === 'concert' && <ConcertSelectForm />}
+      </div>
       <Submit currentStep={currentStep} setCurrentStep={setCurrentStep} />
     </div>
   )

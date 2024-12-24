@@ -25,7 +25,7 @@ const AllListenedSongs: React.FC = () => {
   const allListenedSongAmount = allListenedSpecialSongList.length + 32
 
   return (
-    <div className={clsx(['flex flex-col gap-4 p-4', 'border-2 border-black'])}>
+    <div className={clsx(['flex flex-col gap-4 p-4'])}>
       <div className="text-2xl font-bold">你今年一共听过</div>
       <div className="text-2xl font-bold">{allListenedSongAmount} 首现场</div>
       <div className="text-2xl font-bold">

@@ -31,7 +31,7 @@ const Submit: React.FC<{ currentStep: 'base' | 'concert'; setCurrentStep: (step:
 
   return (
     <>
-      <div className="flex justify-center gap-4 p-2 overflow-y-auto border-t-2">
+      <div className="flex justify-center shrink-0 gap-4 p-2 overflow-y-auto border-t-2">
         <div className="flex items-center space-x-2">
           <Checkbox id="terms" checked={selected} onCheckedChange={() => toggle()} />
           <label htmlFor="terms" className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
@@ -62,7 +62,7 @@ const Submit: React.FC<{ currentStep: 'base' | 'concert'; setCurrentStep: (step:
         )}
         <div
           className={clsx([
-            'flex justify-center items-center',
+            'flex shrink-0 justify-center items-center',
             'py-4 px-6 rounded-full cursor-pointer text-lg',
             'border-2 border-black bg-black text-white hover:bg-gray-700',
           ])}
