@@ -7,6 +7,7 @@ export interface Concert {
   guestSongList: string[]
   endingSong: string
   encoreSongList: string[]
+  ballColorList: string[]
 }
 
 export enum SongType {

@@ -9,6 +9,7 @@ import AttentedStat from './reports/AttentedStat'
 import AllListenedSongs from './reports/AllListenedSongs'
 import RequestSongsStat from './reports/RequestSongsStat'
 import CityStat from './reports/CityStat'
+import EncoreSongStat from './reports/EncoreSongStat'
 
 const Report: React.FC = () => {
   const username = useAtomValue(usernameAtom)
@@ -42,49 +43,50 @@ const Report: React.FC = () => {
     AllListenedSongs,
     CityStat,
     RequestSongsStat,
+    EncoreSongStat,
   }
 
   return (
-      <div className="flex-1 flex flex-col overflow-y-auto">
-        <div className="flex-1 overflow-hidden bg-black" ref={emblaRef}>
-          <div className="flex h-full">
-            {Object.entries(slides).map(([key, Slide], index) => (
-              <div className="carousel-item" key={key}>
-                <Slide focus={index === currentIndex} />
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="flex items-center justify-end gap-2 p-2 border-t-2">
-          {selectedSnap !== 0 && (
-            <button
-              type="button"
-              className={clsx([
-                'flex justify-center items-center',
-                'py-3 px-4 rounded-full cursor-pointer text-lg',
-                'border-2 border-black hover:bg-black hover:text-white',
-              ])}
-              onClick={scrollPrev}
-            >
-              <ArrowLeft />
-            </button>
-          )}
-          {selectedSnap !== snapCount - 1 && (
-            <button
-              type="button"
-              className={clsx([
-                'flex justify-center items-center gap-2',
-                'py-3 px-4 rounded-full cursor-pointer text-lg',
-                'border-2 border-black hover:bg-black hover:text-white',
-              ])}
-              onClick={scrollNext}
-            >
-              <span>下一页</span>
-              <ArrowRight />
-            </button>
-          )}
+    <div className="flex-1 flex flex-col overflow-y-auto">
+      <div className="flex-1 overflow-hidden bg-black" ref={emblaRef}>
+        <div className="flex h-full">
+          {Object.entries(slides).map(([key, Slide], index) => (
+            <div className="carousel-item" key={key}>
+              <Slide focus={index === currentIndex} />
+            </div>
+          ))}
         </div>
       </div>
+      <div className="flex items-center justify-end gap-2 p-2 border-t-2">
+        {selectedSnap !== 0 && (
+          <button
+            type="button"
+            className={clsx([
+              'flex justify-center items-center',
+              'py-3 px-4 rounded-full cursor-pointer text-lg',
+              'border-2 border-black hover:bg-black hover:text-white',
+            ])}
+            onClick={scrollPrev}
+          >
+            <ArrowLeft />
+          </button>
+        )}
+        {selectedSnap !== snapCount - 1 && (
+          <button
+            type="button"
+            className={clsx([
+              'flex justify-center items-center gap-2',
+              'py-3 px-4 rounded-full cursor-pointer text-lg',
+              'border-2 border-black hover:bg-black hover:text-white',
+            ])}
+            onClick={scrollNext}
+          >
+            <span>下一页</span>
+            <ArrowRight />
+          </button>
+        )}
+      </div>
+    </div>
   )
 }
 

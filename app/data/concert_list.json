@@ -249,7 +249,8 @@
       "夜訪吸血鬼",
       "洋蔥"
     ],
-    "endingSong": "洋蔥"
+    "endingSong": "洋蔥",
+    "ballColorList": ["blue"]
   },
   {
     "date": "2024.05.04",
@@ -266,7 +267,8 @@
     "encoreSongList": [
       "八月愛人"
     ],
-    "endingSong": "八月愛人"
+    "endingSong": "八月愛人",
+    "ballColorList": ["blue"]
   },
   {
     "date": "2024.05.05",
@@ -284,7 +286,8 @@
       "香水",
       "頑固"
     ],
-    "endingSong": "頑固"
+    "endingSong": "頑固",
+    "ballColorList": ["blue"]
   },
   {
     "date": "2024.05.07",
@@ -305,7 +308,8 @@
       "如果我們不曾相遇",
       "生命有一種絕對"
     ],
-    "endingSong": "生命有一種絕對"
+    "endingSong": "生命有一種絕對",
+    "ballColorList": ["blue"]
   },
   {
     "date": "2024.05.08",
@@ -323,7 +327,8 @@
       "雌雄同體",
       "倉頡"
     ],
-    "endingSong": "倉頡"
+    "endingSong": "倉頡",
+    "ballColorList": ["blue"]
   },
   {
     "date": "2024.05.09",
@@ -342,7 +347,8 @@
       "玫瑰少年",
       "後來的我們"
     ],
-    "endingSong": "後來的我們"
+    "endingSong": "後來的我們",
+    "ballColorList": ["blue"]
   },
   {
     "date": "2024.05.18",
@@ -361,7 +367,8 @@
       "香水",
       "洋蔥"
     ],
-    "endingSong": "洋蔥"
+    "endingSong": "洋蔥",
+    "ballColorList": ["blue"]
   },
   {
     "date": "2024.05.19",
@@ -380,7 +387,8 @@
       "盛夏光年",
       "步步"
     ],
-    "endingSong": "步步"
+    "endingSong": "步步",
+    "ballColorList": ["purple"]
   },
   {
     "date": "2024.05.21",
@@ -399,7 +407,8 @@
       "夜訪吸血鬼",
       "刻在我心底的名字"
     ],
-    "endingSong": "刻在我心底的名字"
+    "endingSong": "刻在我心底的名字",
+    "ballColorList": ["purple"]
   },
   {
     "date": "2024.05.22",
@@ -419,7 +428,8 @@
       "一顆蘋果",
       "倉頡"
     ],
-    "endingSong": "倉頡"
+    "endingSong": "倉頡",
+    "ballColorList": ["emerald"]
   },
   {
     "date": "2024.05.24",
@@ -439,7 +449,8 @@
       "候鳥",
       "後來的我們"
     ],
-    "endingSong": "後來的我們"
+    "endingSong": "後來的我們",
+    "ballColorList": ["emerald"]
   },
   {
     "date": "2024.05.25",
@@ -459,7 +470,8 @@
       "超人",
       "如果我們不曾相遇"
     ],
-    "endingSong": "如果我們不曾相遇"
+    "endingSong": "如果我們不曾相遇",
+    "ballColorList": ["orange"]
   },
   {
     "date": "2024.05.26",
@@ -479,7 +491,8 @@
       "為愛而生",
       "你不是真正的快樂"
     ],
-    "endingSong": "你不是真正的快樂"
+    "endingSong": "你不是真正的快樂",
+    "ballColorList": ["rose"]
   },
   {
     "date": "2024.05.30",
@@ -498,7 +511,8 @@
       "如煙",
       "最重要的小事"
     ],
-    "endingSong": "最重要的小事"
+    "endingSong": "最重要的小事",
+    "ballColorList": ["pink"]
   },
   {
     "date": "2024.05.31",
@@ -517,7 +531,8 @@
       "星空",
       "聽不到"
     ],
-    "endingSong": "聽不到"
+    "endingSong": "聽不到",
+    "ballColorList": ["yellow"]
   },
   {
     "date": "2024.06.01",
@@ -536,7 +551,8 @@
       "少年他的奇幻漂流",
       "憨人"
     ],
-    "endingSong": "憨人"
+    "endingSong": "憨人",
+    "ballColorList": ["white"]
   },
   {
     "date": "2024.07.01",
@@ -555,7 +571,8 @@
       "香水",
       "你不是真正的快樂"
     ],
-    "endingSong": "你不是真正的快樂"
+    "endingSong": "你不是真正的快樂",
+    "ballColorList": ["yellow"]
   },
   {
     "date": "2024.07.02",
@@ -577,7 +594,8 @@
       "一顆蘋果",
       "洋蔥"
     ],
-    "endingSong": "洋蔥"
+    "endingSong": "洋蔥",
+    "ballColorList": ["sky"]
   },
   {
     "date": "2024.07.03",
@@ -598,7 +616,8 @@
       "玫瑰少年",
       "星空"
     ],
-    "endingSong": "星空"
+    "endingSong": "星空",
+    "ballColorList": ["pink"]
   },
   {
     "date": "2024.07.05",
@@ -618,7 +637,8 @@
       "盛夏光年",
       "如果我們不曾相遇"
     ],
-    "endingSong": "如果我們不曾相遇"
+    "endingSong": "如果我們不曾相遇",
+    "ballColorList": ["yellow"]
   },
   {
     "date": "2024.07.06",
@@ -639,7 +659,8 @@
       "聽不到",
       "OAOA"
     ],
-    "endingSong": "OAOA"
+    "endingSong": "OAOA",
+    "ballColorList": ["purple"]
   },
   {
     "date": "2024.07.07",
@@ -660,7 +681,8 @@
       "笑忘歌",
       "頑固"
     ],
-    "endingSong": "頑固"
+    "endingSong": "頑固",
+    "ballColorList": ["blue"]
   },
   {
     "date": "2024.07.31",
@@ -679,7 +701,8 @@
       "如果我們不曾相遇",
       "聽不到"
     ],
-    "endingSong": "聽不到"
+    "endingSong": "聽不到",
+    "ballColorList": ["orange"]
   },
   {
     "date": "2024.08.02",
@@ -697,7 +720,8 @@
       "香水",
       "洋蔥"
     ],
-    "endingSong": "洋蔥"
+    "endingSong": "洋蔥",
+    "ballColorList": ["purple"]
   },
   {
     "date": "2024.08.03",
@@ -716,7 +740,8 @@
       "你不是真正的快樂",
       "OAOA"
     ],
-    "endingSong": "OAOA"
+    "endingSong": "OAOA",
+    "ballColorList": ["pink"]
   },
   {
     "date": "2024.08.04",
@@ -737,7 +762,8 @@
       "一顆蘋果",
       "擁抱"
     ],
-    "endingSong": "擁抱"
+    "endingSong": "擁抱",
+    "ballColorList": ["sky", "red", "yellow"]
   },
   {
     "date": "2024.09.06",
@@ -756,7 +782,8 @@
       "命運",
       "頑固"
     ],
-    "endingSong": "頑固"
+    "endingSong": "頑固",
+    "ballColorList": ["blue"]
   },
   {
     "date": "2024.09.07",
@@ -776,7 +803,8 @@
       "倉頡",
       "一顆蘋果"
     ],
-    "endingSong": "一顆蘋果"
+    "endingSong": "一顆蘋果",
+    "ballColorList": ["red"]
   },
   {
     "date": "2024.09.08",
@@ -795,7 +823,8 @@
       "候鳥",
       "星空"
     ],
-    "endingSong": "星空"
+    "endingSong": "星空",
+    "ballColorList": ["pink"]
   },
   {
     "date": "2024.09.10",
@@ -814,7 +843,8 @@
       "盛夏光年",
       "洋蔥"
     ],
-    "endingSong": "洋蔥"
+    "endingSong": "洋蔥",
+    "ballColorList": ["yellow"]
   },
   {
     "date": "2024.09.11",
@@ -837,7 +867,8 @@
       "步步",
       "你不是真正的快樂"
     ],
-    "endingSong": "你不是真正的快樂"
+    "endingSong": "你不是真正的快樂",
+    "ballColorList": ["white"]
   },
   {
     "date": "2024.09.27",
@@ -859,7 +890,8 @@
       "一顆蘋果",
       "如果我們不曾相遇"
     ],
-    "endingSong": "如果我們不曾相遇"
+    "endingSong": "如果我們不曾相遇",
+    "ballColorList": ["blue", "red"]
   },
   {
     "date": "2024.09.28",
@@ -879,7 +911,8 @@
       "星空",
       "後來的我們"
     ],
-    "endingSong": "後來的我們"
+    "endingSong": "後來的我們",
+    "ballColorList": ["yellow"]
   },
   {
     "date": "2024.09.30",
@@ -899,7 +932,8 @@
       "你不是真正的快樂",
       "洋蔥"
     ],
-    "endingSong": "洋蔥"
+    "endingSong": "洋蔥",
+    "ballColorList": ["sky"]
   },
   {
     "date": "2024.10.04",
@@ -921,7 +955,8 @@
       "如果我們不曾相遇",
       "聽不到"
     ],
-    "endingSong": "聽不到"
+    "endingSong": "聽不到",
+    "ballColorList": ["white"]
   },
   {
     "date": "2024.11.10",
@@ -942,7 +977,8 @@
       "第一天",
       "聽不到"
     ],
-    "endingSong": "聽不到"
+    "endingSong": "聽不到",
+    "ballColorList": ["pink"]
   },
   {
     "date": "2024.11.12",
@@ -962,7 +998,8 @@
       "第二人生",
       "星空"
     ],
-    "endingSong": "星空"
+    "endingSong": "星空",
+    "ballColorList": ["orange"]
   },
   {
     "date": "2024.11.13",
@@ -982,7 +1019,8 @@
       "洋蔥",
       "如果我們不曾相遇"
     ],
-    "endingSong": "如果我們不曾相遇"
+    "endingSong": "如果我們不曾相遇",
+    "ballColorList": ["yellow"]
   },
   {
     "date": "2024.11.15",
@@ -1003,7 +1041,8 @@
       "放肆",
       "玫瑰少年"
     ],
-    "endingSong": "玫瑰少年"
+    "endingSong": "玫瑰少年",
+    "ballColorList": ["emerald", "white"]
   },
   {
     "date": "2024.11.16",
@@ -1024,7 +1063,8 @@
       "雌雄同體",
       "一顆蘋果"
     ],
-    "endingSong": "一顆蘋果"
+    "endingSong": "一顆蘋果",
+    "ballColorList": ["pink", "red"]
   },
   {
     "date": "2024.11.17",
@@ -1045,7 +1085,8 @@
       "頑固",
       "最重要的小事"
     ],
-    "endingSong": "最重要的小事"
+    "endingSong": "最重要的小事",
+    "ballColorList": ["orange"]
   },
   {
     "date": "2024.11.19",
@@ -1067,7 +1108,8 @@
       "如果我們不曾相遇",
       "為你寫下這首情歌"
     ],
-    "endingSong": "為你寫下這首情歌"
+    "endingSong": "為你寫下這首情歌",
+    "ballColorList": ["yellow"]
   },
   {
     "date": "2024.11.20",
@@ -1087,7 +1129,8 @@
       "玫瑰少年",
       "洋蔥"
     ],
-    "endingSong": "洋蔥"
+    "endingSong": "洋蔥",
+    "ballColorList": ["emerald"]
   },
   {
     "date": "2024.11.22",
@@ -1107,7 +1150,8 @@
       "步步",
       "你不是真正的快樂"
     ],
-    "endingSong": "你不是真正的快樂"
+    "endingSong": "你不是真正的快樂",
+    "ballColorList": ["sky"]
   },
   {
     "date": "2024.11.23",
@@ -1127,7 +1171,8 @@
       "頑固",
       "玫瑰少年"
     ],
-    "endingSong": "玫瑰少年"
+    "endingSong": "玫瑰少年",
+    "ballColorList": ["blue"]
   },
   {
     "date": "2024.11.24",
@@ -1148,6 +1193,7 @@
       "如果我們不曾相遇",
       "聽不到"
     ],
-    "endingSong": "聽不到"
+    "endingSong": "聽不到",
+    "ballColorList": ["purple", "pink"]
   }
 ]
