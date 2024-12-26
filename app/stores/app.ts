@@ -1,5 +1,5 @@
 import { atom } from 'jotai'
-import { concertListMap } from '~/logic/data'
+import { concertListMap } from '~/lib/data'
 import { geoCoordMap } from '~/data/geoCoord'
 import type { Concert } from '~/data/types'
 

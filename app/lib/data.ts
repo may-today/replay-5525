@@ -1,5 +1,7 @@
-import concertList from '../data/concert_list.json'
+import concertListRaw from '../data/concert_list.json'
 import type { Concert } from '../data/types'
+
+const concertList = concertListRaw as Concert[]
 
 const getCityConcertGroupList = () => {
   const cityIndexConcertGroupList = {} as Record<string, Concert[]>

@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { useAtomValue, useSetAtom } from 'jotai'
-import { cityConcertGroupList } from '~/logic/data'
+import { cityConcertGroupList } from '~/lib/data'
 import { toggleSelectedConcertDateAtom, selectedConcertDatesAtom } from '~/stores/app'
 
 const ConcertSelectForm = () => {

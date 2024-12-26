@@ -1,8 +1,11 @@
 import clsx from 'clsx'
 import { useAtomValue } from 'jotai'
-import { selectedConcertDetailsAtom } from '../../stores/app'
-import { concertListMap } from '../../logic/data'
+import { AnimatedNumber } from '~/components/ui/animated-number'
+import { selectedConcertDetailsAtom } from '~/stores/app'
+import { concertListMap } from '~/lib/data'
 import crown from '~/assets/crown.svg'
+import type { Concert } from '~/data/types'
+import { useFocusValue } from '~/hooks/useFocus'
 
 const allRequestSongListRaw = Object.values(concertListMap).reduce((acc, concert) => {
   return acc.concat(concert.requestSongList)
@@ -20,16 +23,14 @@ const allRequestSongAmountMap = Object.fromEntries(
   ).sort(([, a], [, b]) => b - a)
 )
 
-const RequestSongsStat: React.FC = () => {
-  const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
-
-  const allListenedRequestSongListRaw = selectedConcertDetails.reduce((acc, concert) => {
+const getPageData = (selectedConcertDetails: Concert[]) => {
+  const listenedRequestSongListRaw = selectedConcertDetails.reduce((acc, concert) => {
     return acc.concat(concert.requestSongList)
   }, [] as string[])
-  const allListenedRequestSongList = Array.from(new Set(allListenedRequestSongListRaw))
-  const allListenedRequestSongAmountMap = Object.fromEntries(
+  const listenedRequestSongList = Array.from(new Set(listenedRequestSongListRaw))
+  const listenedRequestSongAmountMap = Object.fromEntries(
     Object.entries(
-      allListenedRequestSongListRaw.reduce(
+      listenedRequestSongListRaw.reduce(
         (acc, song) => {
           acc[song] = (acc[song] || 0) + 1
           return acc
@@ -38,14 +39,56 @@ const RequestSongsStat: React.FC = () => {
       )
     ).sort(([, a], [, b]) => b - a)
   )
+  const maxRequestCount = Object.values(listenedRequestSongAmountMap)[0]
+  const topRequestSongs = Object.entries(listenedRequestSongAmountMap)
+    .filter(([, count]) => count === maxRequestCount)
+    .map(([song]) => song)
+  const top1RequestSong = topRequestSongs[0]
+  const top1RequestSongDateList = selectedConcertDetails
+    .filter((concert) => concert.requestSongList.includes(top1RequestSong) || concert.encoreSongList.includes(top1RequestSong))
+    .map((concert) => concert.date)
+
+  return {
+    listenedRequestSongList,
+    listenedRequestSongAmountMap,
+    listenedRequestSongRate: ~~((listenedRequestSongList.length / allRequestSongList.length) * 100),
+    topRequestSongs,
+    top1RequestSong,
+    top1RequestSongDateList,
+  }
+}
+
+const RequestSongsStat: React.FC<{ focus: boolean }> = ({ focus }) => {
+  const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
+  const data = getPageData(selectedConcertDetails)
+
+  const animListenedRequestSongAmount = useFocusValue(focus, () => data.listenedRequestSongList.length)
+  const animListenedRequestSongRate = useFocusValue(focus, () => data.listenedRequestSongRate)
+  const animTop1RequestSongDateListLength = useFocusValue(focus, () => data.top1RequestSongDateList.length)
 
   return (
-    <div className={clsx(['flex flex-col gap-4 p-4'])}>
+    <div className="p-4">
       <div>
-        <div className="text-xl font-bold">你今年一共听过 <span className="text-3xl">{allListenedRequestSongList.length}</span> 首点歌</div>
-        <div className="text-xl font-bold">占今年点歌数 <span className="text-2xl">{((allListenedRequestSongList.length / allRequestSongList.length) * 100).toFixed(2)}%</span></div>
+        <div className="text-report-normal">
+          今年一共听过
+          <AnimatedNumber className="text-report-large" value={animListenedRequestSongAmount} />
+          首点歌
+        </div>
+        <div className="text-report-normal">
+          覆盖今年点歌
+          <AnimatedNumber className="text-report-large" value={animListenedRequestSongRate} />
+          <span className="text-report-large">%</span>
+        </div>
+        <div className="text-report-normal">
+          {/* TODO: n月m日 */}
+          在 {data.top1RequestSongDateList[0]}，今年你第一次听到
+          <span className="text-report-large">《{data.top1RequestSong}》</span>
+          ，并在今年一共听到
+          <AnimatedNumber className="text-report-large" value={animTop1RequestSongDateListLength} />
+          次，是专属于你的点歌 top1
+        </div>
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 mt-8">
         {Object.keys(allRequestSongAmountMap).map((song) => {
           return (
             <span
@@ -53,16 +96,16 @@ const RequestSongsStat: React.FC = () => {
               className={clsx([
                 'relative px-3 py-1 rounded-full',
                 'border-2 border-black',
-                allListenedRequestSongList.includes(song) ? 'bg-black text-white' : '',
+                data.listenedRequestSongList.includes(song) ? 'bg-black text-white' : '',
               ])}
             >
               {song}
               {/* ({allListenedRequestSongAmountMap[song] || 0}/{allRequestSongAmountMap[song] || 0}) */}
-              {Object.keys(allListenedRequestSongAmountMap)?.[0] === song && (
+              {data.topRequestSongs.includes(song) && (
                 <img src={crown} alt="crown" className="absolute -top-6 -right-4 w-10 h-10 rotate-12" />
               )}
-              {allListenedRequestSongList.includes(song) &&
-                allListenedRequestSongAmountMap[song] === allRequestSongAmountMap[song] && (
+              {data.listenedRequestSongList.includes(song) &&
+                data.listenedRequestSongAmountMap[song] === allRequestSongAmountMap[song] && (
                   <span className="absolute -top-3 -right-3 rotate-12 px-1 bg-white text-black rounded-full text-sm">
                     全勤
                   </span>
@@ -71,13 +114,8 @@ const RequestSongsStat: React.FC = () => {
           )
         })}
       </div>
-      <div className="text-2xl font-bold">你今年一共听过 {allListenedRequestSongList.length} 首点歌</div>
-      <div className="text-2xl font-bold">总点歌数：{allRequestSongList.length}</div>
       <div className="text-2xl font-bold">
-        占比：{((allListenedRequestSongList.length / allRequestSongList.length) * 100).toFixed(2)}%
-      </div>
-      <div className="text-2xl font-bold">
-        {Object.entries(allListenedRequestSongAmountMap)
+        {Object.entries(data.listenedRequestSongAmountMap)
           .slice(0, 5)
           .map(([song, amount]) => {
             return (

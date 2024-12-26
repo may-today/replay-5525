@@ -2,6 +2,7 @@ export interface Concert {
   date: string
   city: string
   cityIndex: number
+  last?: boolean
   guest: string
   requestSongList: string[]
   guestSongList: string[]

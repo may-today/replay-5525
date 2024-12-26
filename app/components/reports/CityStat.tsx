@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { useAtomValue } from 'jotai'
-import { InfiniteSlider } from '../ui/infinite-slider'
-import { AnimatedNumber } from '../ui/animated-number'
+import { InfiniteSlider } from '~/components/ui/infinite-slider'
+import { AnimatedNumber } from '~/components/ui/animated-number'
 import { selectedConcertDetailsAtom, selectedCoordAtom } from '~/stores/app'
-import { concertListMap } from '~/logic/data'
+import { concertListMap } from '~/lib/data'
+import { useFocusValue } from '~/hooks/useFocus'
+import type { Concert } from '~/data/types'
 
 const allCityList = Array.from(new Set(Object.values(concertListMap).map((concert) => concert.city)))
 const allCityCoordMap = {
@@ -19,25 +21,8 @@ const allCityCoordMap = {
   上海: [121.48, 31.22],
 } as Record<string, [number, number]>
 
-const CityStat: React.FC<{
-  focus: boolean
-}> = ({ focus }) => {
-  const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
-  const selectedCoord = useAtomValue(selectedCoordAtom)
+const getPageData = (selectedConcertDetails: Concert[], selectedCoord: [number, number]) => {
   const allListenedCityList = Array.from(new Set(selectedConcertDetails.map((concert) => concert.city)))
-  const [distanceValue, setDistanceValue] = useState(0)
-
-  useEffect(() => {
-    if (focus) {
-      console.log('focus')
-      setDistanceValue(Number(listenedCityDistance.reduce((acc, city) => acc + city.distance, 0).toFixed(2)))
-    }
-  }, [focus])
-
-  if (!selectedCoord) {
-    return null
-  }
-
   const listenedCityDistance = allListenedCityList
     .map((city) => {
       return {
@@ -46,7 +31,24 @@ const CityStat: React.FC<{
       }
     })
     .sort((a, b) => b.distance - a.distance)
-  const nearestCity = listenedCityDistance.filter((city) => city.distance < 150)
+  const homeCity = listenedCityDistance.filter((city) => city.distance < 150)
+  const allDistance = listenedCityDistance.reduce((acc, city) => acc + city.distance, 0)
+  return {
+    allListenedCityList,
+    listenedCityDistance,
+    homeCity,
+    allDistance,
+  }
+}
+
+const CityStat: React.FC<{
+  focus: boolean
+}> = ({ focus }) => {
+  const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
+  const selectedCoord = useAtomValue(selectedCoordAtom) || [0, 0]
+  const data = getPageData(selectedConcertDetails, selectedCoord)
+  const animDistance = useFocusValue(focus, () => data.allDistance)
+  const animCityAmount = useFocusValue(focus, () => data.allListenedCityList.length)
 
   return (
     <div className="py-4">
@@ -58,7 +60,7 @@ const CityStat: React.FC<{
               className={clsx([
                 'relative px-6 py-3 rounded-full text-6xl',
                 'border-2 border-black',
-                allListenedCityList.includes(city) ? 'bg-black text-white' : '',
+                data.allListenedCityList.includes(city) ? 'bg-black text-white' : '',
               ])}
             >
               {city}
@@ -69,28 +71,18 @@ const CityStat: React.FC<{
       <div className="absolute bottom-0 left-0 right-0 px-4 py-4">
         <div className="text-report-normal">
           今年你跨越了
-          <AnimatedNumber
-            className="text-report-large"
-            springOptions={{
-              bounce: 0,
-              duration: 2000,
-            }}
-            value={distanceValue}
-          />
-          {/* <span className="text-report-large">
-            {listenedCityDistance.reduce((acc, city) => acc + city.distance, 0).toFixed(2)}
-          </span>{' '} */}
+          <AnimatedNumber className="text-report-large" value={animDistance} />
           公里
         </div>
         <div className="text-report-normal">
-          来到 <span className="text-report-large">{allListenedCityList.length}</span> 个城市
+          来到 <AnimatedNumber className="text-report-large" value={animCityAmount} /> 个城市
         </div>
         <div className="text-report-normal">
-          最远的城市为 <span className="text-report-large">{listenedCityDistance[0].city}</span>
+          最远的城市为 <span className="text-report-large">{data.listenedCityDistance[0].city}</span>
         </div>
-        {nearestCity.length > 0 && (
+        {data.homeCity.length > 0 && (
           <div className="text-report-normal">
-            今年 <span className="text-report-large">{nearestCity.map((city) => `${city.city}站`).join('、')}</span>{' '}
+            今年 <span className="text-report-large">{data.homeCity.map((city) => `${city.city}站`).join('、')}</span>{' '}
             开在了你家门口
           </div>
         )}

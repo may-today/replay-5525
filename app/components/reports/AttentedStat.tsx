@@ -1,9 +1,10 @@
-import clsx from 'clsx'
 import { useAtomValue } from 'jotai'
 import { Bar, BarChart } from 'recharts'
+import { AnimatedNumber } from '~/components/ui/animated-number'
 import { ChartContainer, type ChartConfig } from '~/components/ui/chart'
 import { selectedConcertDatesAtom } from '../../stores/app'
-import { concertListMap } from '../../logic/data'
+import { concertListMap } from '../../lib/data'
+import { useFocusValue } from '~/hooks/useFocus'
 
 type ChartData = {
   month: string
@@ -11,15 +12,38 @@ type ChartData = {
   attended: number
 }[]
 
-const AttentedStat: React.FC = () => {
+const AttentedStat: React.FC<{ focus: boolean }> = ({ focus }) => {
   const selectedDates = useAtomValue(selectedConcertDatesAtom)
   const chartData = getChartData(selectedDates)
+  const animAmount = useFocusValue(focus, () => selectedDates.length)
+  const animRate = useFocusValue(focus, () => ~~((selectedDates.length / Object.keys(concertListMap).length) * 100))
+  const lastConcertAmount = selectedDates.filter((date) => concertListMap[date].last).length
+  const animLastConcertAmount = useFocusValue(focus, () => lastConcertAmount)
 
   return (
     <div className="h-full flex flex-col">
       <div className="flex-1 p-4">
-        <div className="text-report-normal">你参加了<span className="text-report-large">{selectedDates.length}</span> 场演唱会</div>
-        <div className="text-report-normal">出勤率<span className="text-report-large">{((selectedDates.length / Object.keys(concertListMap).length) * 100).toFixed(2)}%</span></div>
+        <div className="text-report-normal">
+          2024年，你一共看了
+          <AnimatedNumber className="text-report-large" value={animAmount} />场
+        </div>
+        <div className="text-report-normal">
+          出勤率
+          <AnimatedNumber className="text-report-large" value={animRate} />%
+          {animRate === 100 && (
+            <>
+              {' '}获得
+              <span className="text-report-large">全勤成就</span>
+            </>
+          )}
+        </div>
+        {lastConcertAmount > 0 && (
+          <div className="text-report-normal">
+            共解锁
+            <AnimatedNumber className="text-report-large" value={animLastConcertAmount} />
+            次尾场
+          </div>
+        )}
       </div>
       <Chart chartData={chartData} />
     </div>

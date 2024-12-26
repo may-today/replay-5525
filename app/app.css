@@ -56,7 +56,7 @@ body {
 
 @layer utilities {
   .text-report-normal {
-    @apply text-xl font-bold;
+    @apply text-xl font-bold my-2 leading-relaxed;
   }
   .text-report-large {
     @apply text-4xl font-bold mx-1;

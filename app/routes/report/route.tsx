@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import Header from '~/components/Header'
-import Report from '~/components/Report'
+import Report from './Report'
 
 export default function ReportPage() {
   return (

@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useAtomValue } from 'jotai'
 import { selectedConcertDatesAtom } from '../../stores/app'
 import { selectedConcertDetailsAtom } from '../../stores/app'
-import { concertListMap } from '../../logic/data'
+import { concertListMap } from '../../lib/data'
 
 const allSongs = 170
 const allLiveAmount = Array.from(

@@ -95,6 +95,7 @@
     "date": "2024.01.07",
     "city": "台中",
     "cityIndex": 6,
+    "last": true,
     "guest": "",
     "requestSongList": [
       "噢買尬",
@@ -197,6 +198,7 @@
     "date": "2024.03.31",
     "city": "高雄",
     "cityIndex": 5,
+    "last": true,
     "guest": "",
     "requestSongList": [
       "我們（時時刻刻）",
@@ -334,6 +336,7 @@
     "date": "2024.05.09",
     "city": "香港",
     "cityIndex": 7,
+    "last": true,
     "guest": "",
     "requestSongList": [
       "抓狂",
@@ -538,6 +541,7 @@
     "date": "2024.06.01",
     "city": "北京",
     "cityIndex": 10,
+    "last": true,
     "guest": "",
     "requestSongList": [
       "我又初戀了",
@@ -666,6 +670,7 @@
     "date": "2024.07.07",
     "city": "深圳",
     "cityIndex": 6,
+    "last": true,
     "guest": "",
     "requestSongList": [
       "黑白講",
@@ -747,6 +752,7 @@
     "date": "2024.08.04",
     "city": "太原",
     "cityIndex": 4,
+    "last": true,
     "guest": "",
     "requestSongList": [
       "如果我們不曾相遇",
@@ -850,6 +856,7 @@
     "date": "2024.09.11",
     "city": "武漢",
     "cityIndex": 5,
+    "last": true,
     "guest": "",
     "requestSongList": [
       "後來的我們",
@@ -939,6 +946,7 @@
     "date": "2024.10.04",
     "city": "成都",
     "cityIndex": 4,
+    "last": true,
     "guest": "",
     "requestSongList": [
       "開天窗",
@@ -1178,6 +1186,7 @@
     "date": "2024.11.24",
     "city": "上海",
     "cityIndex": 11,
+    "last": true,
     "guest": "",
     "requestSongList": [
       "星空",
