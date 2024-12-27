@@ -51,25 +51,26 @@ const AttendedStat: React.FC<{ focus: boolean }> = ({ focus }) => {
     <div className="h-full flex flex-col">
       <div className="flex-1 p-4">
         <div className="text-report-normal">
-          2024年，你一共看了
-          <AnimatedNumber className="text-report-large" value={animValue.amount} />场 5525
+          <span>2024年，你一共看了</span>
+          <AnimatedNumber className="text-report-large" value={animValue.amount} />
+          <span>场</span>
           {data.lastConcertAmount > 0 && (
-            <span>
-              ，解锁了
+            <>
+              <span>，解锁了</span>
               <AnimatedNumber className="text-report-large" value={animValue.lastConcertAmount} />
-              次尾场
-            </span>
+              <span>次尾场</span>
+            </>
           )}
-          ，陪五月天唱过
+          <span>，陪五月天唱过</span>
           <AnimatedNumber className="text-report-large" value={animValue.hours} />
-          小时
+          <span>小时</span>
         </div>
         <div className="text-report-normal">
-          出勤率
+          <span>出勤率</span>
           <AnimatedNumber className="text-report-large" value={animValue.rate} />%
           {animValue.rate === 100 && (
             <>
-              获得
+              <span>获得</span>
               <span className="text-report-large">全勤成就</span>
             </>
           )}
@@ -86,18 +87,23 @@ const GroundSeatText: React.FC<{ data: ReturnType<typeof getPageData> }> = ({ da
     <>
       {data.groundRate >= 60 && (
         <div className="text-report-normal">
-          你似乎更喜欢<span className="text-report-large">内场摇滚区</span>
+          <span>你似乎更喜欢</span>
+          <span className="text-report-large">内场摇滚区</span>
         </div>
       )}
       {data.seatsRate >= 60 && (
         <div className="text-report-normal">
-          你似乎更喜欢<span className="text-report-large">看台区</span>
+          <span>你似乎更喜欢</span>
+          <span className="text-report-large">看台区</span>
         </div>
       )}
       {data.groundRate < 60 && data.seatsRate < 60 && (
         <div className="text-report-normal">
-          无论是<span className="text-report-large">内场摇滚区</span>还是
-          <span className="text-report-large">看台区</span>都很快乐
+          <span>无论是</span>
+          <span className="text-report-large">内场摇滚区</span>
+          <span>还是</span>
+          <span className="text-report-large">看台区</span>
+          <span>都很快乐</span>
         </div>
       )}
       {data.outdoorAmount > 0 && (

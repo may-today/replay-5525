@@ -68,20 +68,20 @@ const EncoreSongStat: React.FC<{ focus: boolean }> = ({ focus }) => {
   return (
     <div className="p-4">
       <div className="text-report-normal">
-        你今年一共听过
+        <span>你今年一共听过</span>
         <AnimatedNumber className="text-report-large" value={animListenedEncoreSongListLength} />
-        首安可随机曲目
+        <span>首安可随机曲目</span>
       </div>
       <div className="text-report-normal">
-        解锁安可大球颜色
-        <AnimatedNumber className="text-report-large" value={animListenedBallColorAmountMapLength} />/
-        {Object.keys(ballColorMap).length}
+        <span>解锁安可大球颜色</span>
+        <AnimatedNumber className="text-report-large" value={animListenedBallColorAmountMapLength} />
+        <span>/{Object.keys(ballColorMap).length}</span>
       </div>
       <ListenedBallGroup listenedBallColorAmountMap={data.listenedBallColorAmountMap} />
       {Object.values(data.listenedEndingSongAmountMap)[0] > 1 && (
         <>
           <div className="text-report-normal">
-            最常听到的结尾曲是
+            <span>最常听到的结尾曲是</span>
             <span className="text-report-large">《{Object.keys(data.listenedEndingSongAmountMap)[0]}》</span>
           </div>
           <div className="text-report-normal">

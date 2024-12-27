@@ -76,34 +76,34 @@ const CityStat: React.FC<{
         {data.allDistance > 100 ? (
           <>
             <div className="text-report-normal">
-              今年你跨越了
+              <span>今年你跨越了</span>
               <AnimatedNumber className="text-report-large" value={animValue.distance} />
-              公里
+              <span>公里</span>
             </div>
             <div className="text-report-normal">
-              来到
+              <span>来到</span>
               <AnimatedNumber className="text-report-large" value={animValue.cityAmount} />
-              个城市
+              <span>个城市</span>
             </div>
           </>
         ) : (
           <div className="text-report-normal">
-            今年你一共去了
+            <span>今年你一共去了</span>
             <AnimatedNumber className="text-report-large" value={animValue.cityAmount} />
-            个城市
+            <span>个城市</span>
           </div>
         )}
         {selectedCoord && data.listenedCityDistance.length > 1 && (
           <div className="text-report-normal">
-            最远的城市为
+            <span>最远的城市为</span>
             <AnimatedNumber className="text-report-large" value={animValue.top1Distance} />
-            公里外的
+            <span>公里外的</span>
             <span className="text-report-large">{data.listenedCityDistance[0].city}</span>
           </div>
         )}
         {selectedCoord && data.homeCity.length > 0 && (
           <div className="text-report-normal">
-            去了开在了家门口的
+            <span>去了开在了家门口的</span>
             <span className="text-report-large">{data.homeCity.map((city) => `${city.city}站`).join('、')}</span>
           </div>
         )}

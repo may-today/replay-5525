@@ -71,45 +71,41 @@ const RequestSongsStat: React.FC<{ focus: boolean }> = ({ focus }) => {
     top1RequestSongDateListLength: data.top1RequestSongConcertList.length,
   }))
 
-  // const animListenedRequestSongAmount = useFocusValue(focus, () => data.listenedRequestSongList.length)
-  // const animListenedRequestSongRate = useFocusValue(focus, () => data.listenedRequestSongRate)
-  // const animTop1RequestSongDateListLength = useFocusValue(focus, () => data.top1RequestSongConcertList.length)
-
   return (
     <div className="p-4">
       <div>
         <div className="text-report-normal">
-          今年一共听过
+          <span>今年一共听过</span>
           <AnimatedNumber className="text-report-large" value={animValue.listenedRequestSongAmount} />
-          首点歌
+          <span>首点歌</span>
         </div>
         <div className="text-report-normal">
-          覆盖今年点歌
+          <span>覆盖今年点歌</span>
           <AnimatedNumber className="text-report-large" value={animValue.listenedRequestSongRate} />
-          <span className="text-report-large">%</span>
+          <span>%</span>
         </div>
         {data.top1RequestSongConcertList.length > 1 && (
           <>
             <div className="text-report-normal">
               <div>
-                在
+                <span>在</span>
                 <ConcertTitle className="text-report-large" concert={data.top1RequestSongConcertList[0]} />
-                第一次听到
+                <span>第一次听到</span>
                 <span className="text-report-large">《{data.top1RequestSong}》</span>
               </div>
               <div>
-                并今年在随机曲目中听到
+                <span>并今年在随机曲目中听到</span>
                 <AnimatedNumber className="text-report-large" value={animValue.top1RequestSongDateListLength} />
-                次，是专属于你的点歌 top1
+                <span>次，是专属于你的点歌 top1</span>
               </div>
             </div>
             { data.topRequestSongs.length > 1 && (
               <div className="text-report-normal">
-                除此之外，
+                <span>除此之外，</span>
                 {data.topRequestSongs.filter((song) => song !== data.top1RequestSong).map((song) => (
                   <span key={song}>《{song}》</span>
                 ))}
-                也并列成为你的点歌 top1
+                <span>也并列成为你的点歌 top1</span>
               </div>
             )}
           </>
