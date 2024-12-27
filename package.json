@@ -30,6 +30,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-freeze": "^1.0.4",
+    "react-rainfall": "^0.1.533",
     "react-router": "^7.1.0",
     "react-use-measure": "^2.1.1",
     "recharts": "^2.15.0",

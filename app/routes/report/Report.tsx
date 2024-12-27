@@ -9,6 +9,7 @@ import { usernameAtom } from '~/stores/app'
 import AttendedStat from '~/components/reports/AttendedStat'
 import AllListenedSongsStat from '~/components/reports/AllListenedSongsStat'
 import CityStat from '~/components/reports/CityStat'
+import RainStat from '~/components/reports/RainStat'
 import GuestStat from '~/components/reports/GuestStat'
 import RequestSongsStat from '~/components/reports/RequestSongsStat'
 import EncoreSongStat from '~/components/reports/EncoreSongStat'
@@ -50,6 +51,8 @@ const Report: React.FC = () => {
     AttendedStat,
     AllListenedSongsStat,
     CityStat,
+    // TODO: hide when not attended
+    RainStat,
     GuestStat,
     RequestSongsStat,
     EncoreSongStat,
