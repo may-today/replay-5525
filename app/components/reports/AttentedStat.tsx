@@ -25,7 +25,7 @@ const AttentedStat: React.FC<{ focus: boolean }> = ({ focus }) => {
       <div className="flex-1 p-4">
         <div className="text-report-normal">
           2024年，你一共看了
-          <AnimatedNumber className="text-report-large" value={animAmount} />场
+          <AnimatedNumber className="text-report-large" value={animAmount} />场 5525
         </div>
         <div className="text-report-normal">
           出勤率
