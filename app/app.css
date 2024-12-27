@@ -56,6 +56,6 @@ body {
     @apply text-xl font-bold my-2 leading-relaxed;
   }
   .text-report-large {
-    @apply text-4xl font-bold mx-1;
+    @apply text-4xl font-bold mx-1 first:ml-0;
   }
 }

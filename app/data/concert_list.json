@@ -26,6 +26,8 @@
     "cityIndex": 2,
     "guest": "",
     "requestSongList": [
+      "一翦梅",
+      "一場遊戲一場夢",
       "後青春期的詩",
       "花",
       "心中無別人",
@@ -161,8 +163,8 @@
     "requestSongList": [
       "生活",
       "後青春期的詩",
-      "借問眾神明",
-      "賭神"
+      "賭神",
+      "借問眾神明"
     ],
     "guestSongList": [],
     "encoreSongList": [
@@ -181,8 +183,8 @@
     "requestSongList": [
       "I Love You無望",
       "麥來亂",
-      "好好",
-      "黑暗騎士"
+      "黑暗騎士",
+      "好好"
     ],
     "guestSongList": [],
     "encoreSongList": [
@@ -201,7 +203,7 @@
     "last": true,
     "guest": "",
     "requestSongList": [
-      "我們（時時刻刻）",
+      "我們",
       "花",
       "候鳥",
       "頑固"
@@ -239,14 +241,17 @@
     "date": "2024.05.03",
     "city": "香港",
     "cityIndex": 2,
-    "guest": "",
+    "guest": "Energy",
     "requestSongList": [
       "開天窗",
-      "我們（時時刻刻）",
+      "我們",
       "能不能不要說",
       "你是唯一"
     ],
-    "guestSongList": [],
+    "guestSongList": [
+      "放手",
+      "星期五晚上"
+    ],
     "encoreSongList": [
       "夜訪吸血鬼",
       "洋蔥"
@@ -319,6 +324,7 @@
     "cityIndex": 6,
     "guest": "",
     "requestSongList": [
+      "如煙",
       "小護士",
       "在這一秒",
       "輕功",
@@ -357,15 +363,16 @@
     "date": "2024.05.18",
     "city": "北京",
     "cityIndex": 1,
-    "guest": "",
+    "guest": "陳綺貞",
     "requestSongList": [
-      "私奔到月球",
       "純真",
       "最重要的小事",
       "你是唯一",
       "輕功"
     ],
-    "guestSongList": [],
+    "guestSongList": [
+      "私奔到月球"
+    ],
     "encoreSongList": [
       "香水",
       "洋蔥"
@@ -504,8 +511,8 @@
     "guest": "",
     "requestSongList": [
       "你說那C和弦就是",
-      "米老鼠",
       "將軍令",
+      "米老鼠",
       "有你的將來",
       "永遠的永遠"
     ],
@@ -521,7 +528,7 @@
     "date": "2024.05.31",
     "city": "北京",
     "cityIndex": 9,
-    "guest": "",
+    "guest": "Energy",
     "requestSongList": [
       "好好",
       "擁抱",
@@ -529,7 +536,10 @@
       "生存以上生活以下",
       "小太陽"
     ],
-    "guestSongList": [],
+    "guestSongList": [
+      "放手",
+      "星期五晚上"
+    ],
     "encoreSongList": [
       "星空",
       "聽不到"
@@ -562,7 +572,7 @@
     "date": "2024.07.01",
     "city": "深圳",
     "cityIndex": 1,
-    "guest": "",
+    "guest": "Energy",
     "requestSongList": [
       "勇敢",
       "好好",
@@ -570,7 +580,10 @@
       "忘詞",
       "最好的一天"
     ],
-    "guestSongList": [],
+    "guestSongList": [
+      "放手",
+      "星期五晚上"
+    ],
     "encoreSongList": [
       "香水",
       "你不是真正的快樂"
@@ -693,14 +706,16 @@
     "date": "2024.07.31",
     "city": "太原",
     "cityIndex": 1,
-    "guest": "",
+    "guest": "任賢齊",
     "requestSongList": [
       "後青春期的詩",
       "為愛而生",
       "洗衣機",
       "星空"
     ],
-    "guestSongList": [],
+    "guestSongList": [
+      "傷心太平洋"
+    ],
     "encoreSongList": [
       "盛夏光年",
       "如果我們不曾相遇",
@@ -713,14 +728,16 @@
     "date": "2024.08.02",
     "city": "太原",
     "cityIndex": 2,
-    "guest": "",
+    "guest": "光良",
     "requestSongList": [
       "倉頡",
       "愛情的模樣",
       "亂世浮生",
       "勇敢"
     ],
-    "guestSongList": [],
+    "guestSongList": [
+      "童話"
+    ],
     "encoreSongList": [
       "香水",
       "洋蔥"
@@ -732,14 +749,16 @@
     "date": "2024.08.03",
     "city": "太原",
     "cityIndex": 3,
-    "guest": "",
+    "guest": "丁噹",
     "requestSongList": [
       "心中無別人",
       "一半人生",
       "當每顆星星",
       "勇敢"
     ],
-    "guestSongList": [],
+    "guestSongList": [
+      "猜不透"
+    ],
     "encoreSongList": [
       "夜訪吸血鬼",
       "你不是真正的快樂",
@@ -753,15 +772,16 @@
     "city": "太原",
     "cityIndex": 4,
     "last": true,
-    "guest": "",
+    "guest": "告五人",
     "requestSongList": [
       "如果我們不曾相遇",
       "不見不散",
       "小太陽",
-      "摩托車日記",
       "純真"
     ],
-    "guestSongList": [],
+    "guestSongList": [
+      "愛人錯過"
+    ],
     "encoreSongList": [
       "為愛而生",
       "倉頡",
@@ -775,7 +795,7 @@
     "date": "2024.09.06",
     "city": "武漢",
     "cityIndex": 1,
-    "guest": "",
+    "guest": "陳嘉樺",
     "requestSongList": [
       "叫我第一名",
       "I Love You無望",
@@ -783,7 +803,10 @@
       "武裝",
       "終於結束的起點"
     ],
-    "guestSongList": [],
+    "guestSongList": [
+      "終於結束的起點",
+      "五月天"
+    ],
     "encoreSongList": [
       "命運",
       "頑固"
@@ -816,7 +839,7 @@
     "date": "2024.09.08",
     "city": "武漢",
     "cityIndex": 3,
-    "guest": "",
+    "guest": "蕭敬騰",
     "requestSongList": [
       "超人",
       "春天的吶喊",
@@ -824,7 +847,9 @@
       "能不能不要說",
       "如果我們不曾相遇"
     ],
-    "guestSongList": [],
+    "guestSongList": [
+      "疼愛"
+    ],
     "encoreSongList": [
       "候鳥",
       "星空"
@@ -836,7 +861,7 @@
     "date": "2024.09.10",
     "city": "武漢",
     "cityIndex": 4,
-    "guest": "",
+    "guest": "劉若英",
     "requestSongList": [
       "米老鼠",
       "八月愛人",
@@ -844,7 +869,9 @@
       "玫瑰少年",
       "黑暗騎士"
     ],
-    "guestSongList": [],
+    "guestSongList": [
+      "成全"
+    ],
     "encoreSongList": [
       "盛夏光年",
       "洋蔥"
@@ -857,10 +884,8 @@
     "city": "武漢",
     "cityIndex": 5,
     "last": true,
-    "guest": "",
+    "guest": "劉雨昕",
     "requestSongList": [
-      "後來的我們",
-      "香水",
       "玫瑰少年",
       "如煙",
       "嘿我要走了",
@@ -868,7 +893,10 @@
       "說好不哭",
       "如果我們不曾相遇"
     ],
-    "guestSongList": [],
+    "guestSongList": [
+      "後來的我們",
+      "香水"
+    ],
     "encoreSongList": [
       "夜訪吸血鬼",
       "步步",
@@ -910,7 +938,8 @@
       "真實故事改編",
       "牙關",
       "什麼歌",
-      "八月愛人"
+      "八月愛人",
+      "步步"
     ],
     "guestSongList": [],
     "encoreSongList": [
@@ -931,7 +960,8 @@
       "麥來亂",
       "候鳥",
       "羅密歐與茱麗葉",
-      "因為你所以我"
+      "因為你所以我",
+      "步步"
     ],
     "guestSongList": [],
     "encoreSongList": [
@@ -953,7 +983,8 @@
       "米老鼠",
       "頑固",
       "小護士",
-      "摩托車日記"
+      "摩托車日記",
+      "步步"
     ],
     "guestSongList": [],
     "encoreSongList": [
@@ -992,15 +1023,17 @@
     "date": "2024.11.12",
     "city": "上海",
     "cityIndex": 2,
-    "guest": "",
+    "guest": "林俊傑",
     "requestSongList": [
-      "T 121 3121",
+      "T1213121",
       "你是唯一",
       "I Love You無望",
       "將軍令",
       "一半人生"
     ],
-    "guestSongList": [],
+    "guestSongList": [
+      "不為誰而做的歌"
+    ],
     "encoreSongList": [
       "玫瑰少年",
       "第二人生",
@@ -1034,17 +1067,18 @@
     "date": "2024.11.15",
     "city": "上海",
     "cityIndex": 4,
-    "guest": "",
+    "guest": "Energy",
     "requestSongList": [
-      "二次西遊",
-      "星期五晚上",
       "如煙",
       "Happy birth.day",
       "別惹我",
       "笑忘歌",
       "最重要的小事"
     ],
-    "guestSongList": [],
+    "guestSongList": [
+      "二次西遊",
+      "星期五晚上"
+    ],
     "encoreSongList": [
       "放肆",
       "玫瑰少年"
@@ -1061,7 +1095,7 @@
       "最重要的小事",
       "摩托車日記",
       "終於結束的起點",
-      "証明(國)",
+      "証明",
       "亂世浮生"
     ],
     "guestSongList": [],
@@ -1084,8 +1118,7 @@
       "鹹魚",
       "啾啾啾",
       "2012 ",
-      "小時候",
-      "天天想你"
+      "小時候"
     ],
     "guestSongList": [],
     "encoreSongList": [

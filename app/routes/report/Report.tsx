@@ -7,7 +7,7 @@ import type { EmblaCarouselType } from 'embla-carousel'
 import { Freeze } from 'react-freeze'
 import { usernameAtom } from '~/stores/app'
 import AttendedStat from '~/components/reports/AttendedStat'
-import AllListenedSongs from '~/components/reports/AllListenedSongs'
+import AllListenedSongsStat from '~/components/reports/AllListenedSongsStat'
 import RequestSongsStat from '~/components/reports/RequestSongsStat'
 import CityStat from '~/components/reports/CityStat'
 import EncoreSongStat from '~/components/reports/EncoreSongStat'
@@ -47,7 +47,7 @@ const Report: React.FC = () => {
 
   const slides = {
     AttendedStat,
-    AllListenedSongs,
+    AllListenedSongsStat,
     CityStat,
     RequestSongsStat,
     EncoreSongStat,
@@ -59,7 +59,7 @@ const Report: React.FC = () => {
         <div className="flex h-full">
           {Object.entries(slides).map(([key, Slide], index) => (
             <div className="carousel-item" key={key}>
-              <Freeze freeze={index !== currentIndex}>
+              <Freeze freeze={Math.abs(index - currentIndex) > 1}>
                 <Slide focus={index === currentIndex} />
               </Freeze>
             </div>
