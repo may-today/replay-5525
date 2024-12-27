@@ -10,7 +10,7 @@ type AnimatedNumber = {
 };
 
 export function AnimatedNumber({
-  value,
+  value = 0,
   className,
   springOptions,
 }: AnimatedNumber) {

@@ -28,7 +28,7 @@ const ConcertSelectForm = () => {
                   }
                 }}
               >
-                D{concert.cityIndex}# {concert.date}
+                D{concert.cityIndex}# {concert.date.replace(/20\d{2}\./, '')}
               </div>
             ))}
           </div>

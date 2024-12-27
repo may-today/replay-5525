@@ -77,7 +77,7 @@ const EncoreSongStat: React.FC<{ focus: boolean }> = ({ focus }) => {
         <AnimatedNumber className="text-report-large" value={animListenedBallColorAmountMapLength} />/
         {Object.keys(ballColorMap).length}
       </div>
-      {focus && <ListenedBallGroup listenedBallColorAmountMap={data.listenedBallColorAmountMap} />}
+      <ListenedBallGroup listenedBallColorAmountMap={data.listenedBallColorAmountMap} />
       {Object.values(data.listenedEndingSongAmountMap)[0] > 1 && (
         <>
           <div className="text-report-normal">
@@ -98,21 +98,15 @@ const EncoreSongStat: React.FC<{ focus: boolean }> = ({ focus }) => {
       )}
       {Object.values(data.listenedEndingSongAmountMap)[0] === 1 && selectedConcertDetails.length > 1 && (
         <>
-          <div className="text-report-normal">
-            每场结尾曲对你来说都是独一无二的：
-          </div>
-          {focus && (
-            <AnimatedGroup preset="fade">
-              {selectedConcertDetails.map((concert) => (
-                <div key={concert.date} className="text-report-large mb-2">
-                  《{concert.endingSong}》
-                </div>
-              ))}
-            </AnimatedGroup>
-          )}
-          <div className="text-report-normal">
-            都只听过一次
-          </div>
+          <div className="text-report-normal">每场结尾曲对你来说都是独一无二的：</div>
+          <AnimatedGroup preset="fade">
+            {selectedConcertDetails.map((concert) => (
+              <div key={concert.date} className="text-report-large mb-2">
+                《{concert.endingSong}》
+              </div>
+            ))}
+          </AnimatedGroup>
+          <div className="text-report-normal">都只听过一次</div>
         </>
       )}
     </div>

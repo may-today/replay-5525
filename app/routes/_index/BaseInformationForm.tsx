@@ -11,7 +11,7 @@ const BaseInformationForm = () => {
   return (
     <div className="flex-1 py-2">
       <div className="p-4">
-        <div className="text-xl font-bold mb-4">怎么称呼？</div>
+        <div className="text-xl font-bold mb-4">怎么称呼（可选）？</div>
         <input
           type="text"
           className={clsx([

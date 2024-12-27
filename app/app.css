@@ -52,9 +52,6 @@ body {
   .carousel-item {
     @apply relative h-full mr-[2px] last:mr-0 basis-full shrink-0 bg-background overflow-y-scroll;
   }
-}
-
-@layer utilities {
   .text-report-normal {
     @apply text-xl font-bold my-2 leading-relaxed;
   }

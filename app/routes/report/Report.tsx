@@ -1,11 +1,12 @@
-import { useEffect, useCallback, useState, createContext } from 'react'
+import { useEffect, useCallback, useState } from 'react'
 import clsx from 'clsx'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { useAtomValue } from 'jotai'
 import useEmblaCarousel from 'embla-carousel-react'
 import type { EmblaCarouselType } from 'embla-carousel'
+import { Freeze } from 'react-freeze'
 import { usernameAtom } from '~/stores/app'
-import AttentedStat from '~/components/reports/AttentedStat'
+import AttendedStat from '~/components/reports/AttendedStat'
 import AllListenedSongs from '~/components/reports/AllListenedSongs'
 import RequestSongsStat from '~/components/reports/RequestSongsStat'
 import CityStat from '~/components/reports/CityStat'
@@ -20,26 +21,32 @@ const Report: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const scrollPrev = useCallback(() => {
-    emblaApi?.scrollPrev()
+    if (emblaApi?.canScrollPrev()) {
+      emblaApi.scrollPrev()
+    }
   }, [emblaApi])
 
   const scrollNext = useCallback(() => {
-    emblaApi?.scrollNext()
+    if (emblaApi?.canScrollNext()) {
+      emblaApi.scrollNext()
+    }
   }, [emblaApi])
 
-  const logEmblaEvent = useCallback((emblaApi: EmblaCarouselType) => {
-    const slidesInView = emblaApi?.slidesInView()
-    if (slidesInView?.length === 1) {
-      setCurrentIndex(slidesInView[0])
-    }
-  }, [])
-
   useEffect(() => {
-    if (emblaApi) emblaApi.on('slidesInView', logEmblaEvent)
-  }, [emblaApi, logEmblaEvent])
+    if (!emblaApi) return undefined
+    
+    const onSelect = () => {
+      setCurrentIndex(emblaApi.selectedScrollSnap())
+    }
+
+    emblaApi.on('select', onSelect)
+    return () => {
+      emblaApi.off('select', onSelect)
+    }
+  }, [emblaApi])
 
   const slides = {
-    AttentedStat,
+    AttendedStat,
     AllListenedSongs,
     CityStat,
     RequestSongsStat,
@@ -52,7 +59,9 @@ const Report: React.FC = () => {
         <div className="flex h-full">
           {Object.entries(slides).map(([key, Slide], index) => (
             <div className="carousel-item" key={key}>
-              <Slide focus={index === currentIndex} />
+              <Freeze freeze={index !== currentIndex}>
+                <Slide focus={index === currentIndex} />
+              </Freeze>
             </div>
           ))}
         </div>

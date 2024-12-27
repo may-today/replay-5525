@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import { useAtomValue } from 'jotai'
-import { selectedConcertDatesAtom } from '../../stores/app'
 import { selectedConcertDetailsAtom } from '../../stores/app'
 import { concertListMap } from '../../lib/data'
 
@@ -13,7 +12,6 @@ const allLiveAmount = Array.from(
 ).length + 32
 
 const AllListenedSongs: React.FC = () => {
-  const selectedDates = useAtomValue(selectedConcertDatesAtom)
   const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
 
   const allListenedSpecialSongList = Array.from(

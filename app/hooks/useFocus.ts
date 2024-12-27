@@ -12,6 +12,18 @@ export const useFocusValue = (focus: boolean, getValue: () => number) => {
   return value
 }
 
+export const useFocusValueMap = (focus: boolean, getValue: () => Record<string, number>) => {
+  const [value, setValue] = useState<Record<string, number>>({})
+
+  useEffect(() => {
+    if (focus) {
+      setValue(getValue())
+    }
+  }, [focus])
+
+  return value
+}
+
 export const useFocus = (focus: boolean, callback: () => void) => {
   useEffect(() => {
     if (focus) {

@@ -4,7 +4,7 @@ import { AnimatedNumber } from '~/components/ui/animated-number'
 import { ChartContainer, type ChartConfig } from '~/components/ui/chart'
 import { selectedConcertDatesAtom } from '../../stores/app'
 import { concertListMap } from '../../lib/data'
-import { useFocusValue } from '~/hooks/useFocus'
+import { useFocusValue, useFocusValueMap } from '~/hooks/useFocus'
 
 type ChartData = {
   month: string
@@ -12,27 +12,31 @@ type ChartData = {
   attended: number
 }[]
 
-const AttentedStat: React.FC<{ focus: boolean }> = ({ focus }) => {
+const AttendedStat: React.FC<{ focus: boolean }> = ({ focus }) => {
   const selectedDates = useAtomValue(selectedConcertDatesAtom)
   const chartData = getChartData(selectedDates)
-  const animAmount = useFocusValue(focus, () => selectedDates.length)
-  const animRate = useFocusValue(focus, () => ~~((selectedDates.length / Object.keys(concertListMap).length) * 100))
+  console.log('AttentedStat', chartData)
   const lastConcertAmount = selectedDates.filter((date) => concertListMap[date].last).length
-  const animLastConcertAmount = useFocusValue(focus, () => lastConcertAmount)
+
+  const animValue = useFocusValueMap(focus, () => ({
+    amount: selectedDates.length,
+    rate: ~~((selectedDates.length / Object.keys(concertListMap).length) * 100),
+    lastConcertAmount: lastConcertAmount,
+  }))
 
   return (
     <div className="h-full flex flex-col">
       <div className="flex-1 p-4">
         <div className="text-report-normal">
           2024年，你一共看了
-          <AnimatedNumber className="text-report-large" value={animAmount} />场 5525
+          <AnimatedNumber className="text-report-large" value={animValue.amount} />场 5525
         </div>
         <div className="text-report-normal">
           出勤率
-          <AnimatedNumber className="text-report-large" value={animRate} />%
-          {animRate === 100 && (
+          <AnimatedNumber className="text-report-large" value={animValue.rate} />%
+          {animValue.rate === 100 && (
             <>
-              {' '}获得
+              获得
               <span className="text-report-large">全勤成就</span>
             </>
           )}
@@ -40,7 +44,7 @@ const AttentedStat: React.FC<{ focus: boolean }> = ({ focus }) => {
         {lastConcertAmount > 0 && (
           <div className="text-report-normal">
             共解锁
-            <AnimatedNumber className="text-report-large" value={animLastConcertAmount} />
+            <AnimatedNumber className="text-report-large" value={animValue.lastConcertAmount} />
             次尾场
           </div>
         )}
@@ -95,4 +99,4 @@ const Chart: React.FC<{ chartData: ChartData }> = ({ chartData }) => {
   )
 }
 
-export default AttentedStat
+export default AttendedStat
