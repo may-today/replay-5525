@@ -8,8 +8,9 @@ import { Freeze } from 'react-freeze'
 import { usernameAtom } from '~/stores/app'
 import AttendedStat from '~/components/reports/AttendedStat'
 import AllListenedSongsStat from '~/components/reports/AllListenedSongsStat'
-import RequestSongsStat from '~/components/reports/RequestSongsStat'
 import CityStat from '~/components/reports/CityStat'
+import GuestStat from '~/components/reports/GuestStat'
+import RequestSongsStat from '~/components/reports/RequestSongsStat'
 import EncoreSongStat from '~/components/reports/EncoreSongStat'
 
 const Report: React.FC = () => {
@@ -49,6 +50,7 @@ const Report: React.FC = () => {
     AttendedStat,
     AllListenedSongsStat,
     CityStat,
+    GuestStat,
     RequestSongsStat,
     EncoreSongStat,
   }
