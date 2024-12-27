@@ -2,12 +2,13 @@ import clsx from 'clsx'
 import { useEffect } from 'react'
 import { useAtomValue } from 'jotai'
 import { useNavigate } from "react-router"
-import { selectedConcertDatesAtom } from '~/stores/app'
+import { selectedConcertDateTypeMapAtom } from '~/stores/app'
 import Header from '~/components/Header'
 import Report from './Report'
 
 export default function ReportPage() {
-  const selectedConcertDates = useAtomValue(selectedConcertDatesAtom)
+  const selectedConcertDateTypeMap = useAtomValue(selectedConcertDateTypeMapAtom)
+  const selectedConcertDates = Object.keys(selectedConcertDateTypeMap)
   const navigate = useNavigate()
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>

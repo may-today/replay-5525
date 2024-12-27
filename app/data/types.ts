@@ -24,7 +24,4 @@ export enum SongType {
   ENCORE = 4,
 }
 
-// interface Song {
-//   name: string
-//   type: SongType
-// }
+export type ConcertSelectType = null | 'unknown' | 'outdoor' | 'ground' | 'seats'

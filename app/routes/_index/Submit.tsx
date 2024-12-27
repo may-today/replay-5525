@@ -7,7 +7,7 @@ import { Checkbox } from '~/components/ui/checkbox'
 import { Drawer, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '~/components/ui/drawer'
 import { Toaster } from '~/components/ui/toaster'
 import { useToast } from '~/hooks/use-toast'
-import { selectedConcertDatesAtom } from '~/stores/app'
+import { selectedConcertDateTypeMapAtom } from '~/stores/app'
 
 const Submit: React.FC<{ currentStep: 'base' | 'concert'; setCurrentStep: (step: 'base' | 'concert') => void }> = ({
   currentStep,
@@ -16,7 +16,7 @@ const Submit: React.FC<{ currentStep: 'base' | 'concert'; setCurrentStep: (step:
   const navigate = useNavigate()
   const [selected, toggle] = useToggle(false)
   const { toast } = useToast()
-  const selectedConcertDates = useAtomValue(selectedConcertDatesAtom)
+  const selectedConcertDateTypeMap = useAtomValue(selectedConcertDateTypeMapAtom)
 
   const handleButtonClick = () => {
     if (currentStep === 'base') {
@@ -77,7 +77,7 @@ const Submit: React.FC<{ currentStep: 'base' | 'concert'; setCurrentStep: (step:
               handleButtonClick()
             }
           }}
-          disabled={currentStep === 'concert' && selectedConcertDates.length === 0}
+          disabled={currentStep === 'concert' && Object.keys(selectedConcertDateTypeMap).length === 0}
         >
           <span>
             {currentStep === 'base' ? '下一步' : '生成观演报告'}

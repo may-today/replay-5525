@@ -1,7 +1,7 @@
 import { atom } from 'jotai'
 import { concertListMap } from '~/lib/data'
 import { geoCoordMap } from '~/data/geoCoord'
-import type { Concert } from '~/data/types'
+import type { Concert, ConcertSelectType } from '~/data/types'
 
 export const usernameAtom = atom<string>('')
 export const selectedProvinceAtom = atom<string>('none')
@@ -9,21 +9,27 @@ export const selectedCoordAtom = atom<[number, number] | null>((get) => {
   const province = get(selectedProvinceAtom)
   return geoCoordMap[province] || null
 })
-export const selectedConcertDatesAtom = atom<string[]>([])
+export const selectedConcertDateTypeMapAtom = atom<Record<string, ConcertSelectType>>({})
+// export const selectedConcertDateListAtom = atom<string[]>((get) => {
+//   return Object.keys(get(selectedConcertDateTypeMapAtom))
+// })
 export const selectedConcertDetailsAtom = atom<Concert[]>((get) => {
-  return Array.from(get(selectedConcertDatesAtom)).map((date) => {
+  return Array.from(Object.keys(get(selectedConcertDateTypeMapAtom))).map((date) => {
     const concert = concertListMap[date]
     return concert
   })
 })
 
-export const toggleSelectedConcertDateAtom = atom(null, (get, set, date: string) => {
-  const data = get(selectedConcertDatesAtom)
-  const dataSet = new Set(data)
-  if (dataSet.has(date)) {
-    dataSet.delete(date)
+export const setSelectedConcertDateAtom = atom(null, (get, set, date: string, selectType: ConcertSelectType) => {
+  const data = get(selectedConcertDateTypeMapAtom)
+  const newData = { ...data }
+  
+  if (!selectType) {
+    delete newData[date]
   } else {
-    dataSet.add(date)
+    newData[date] = selectType
   }
-  set(selectedConcertDatesAtom, Array.from(dataSet))
+  
+  console.log('setSelectedConcertDateAtom', newData)
+  set(selectedConcertDateTypeMapAtom, newData)
 })
