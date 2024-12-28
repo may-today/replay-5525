@@ -74,9 +74,9 @@ const GuestStat: React.FC<{
             </div>
             <div className="text-report-normal mt-4">
               {data.allListenedGuestConcertList.map((concert) => (
-                <div key={concert.date} className="mb-1">
-                  <ConcertTitle concert={concert} />
-                  <span className="text-report-large">「{concert.guest}」</span>
+                <div key={concert.date} className="mb-1 flex flex-col sm:flex-row">
+                  <ConcertTitle concert={concert} className="shrink-0" />
+                  <span className="text-report-large shrink-0">「{concert.guest}」</span>
                 </div>
               ))}
             </div>
