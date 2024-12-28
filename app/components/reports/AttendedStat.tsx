@@ -84,7 +84,7 @@ const AttendedStat: React.FC<{ focus: boolean }> = ({ focus }) => {
           <AnimatedNumber className="text-report-large" value={animValue.rate} />%
           {animValue.rate === 100 && (
             <>
-              <span>获得</span>
+              <span className="ml-2">获得</span>
               <span className="text-report-large">全勤成就</span>
             </>
           )}
