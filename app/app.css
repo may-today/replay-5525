@@ -4,7 +4,8 @@
 
 html,
 body {
-  /* font-family: "Source Han Serif CN VF", serif; */
+  font-family: 'Source Han Serif CN VF';
+  font-weight: '250 900';
 }
 
 @layer base {
