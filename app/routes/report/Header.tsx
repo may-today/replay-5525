@@ -10,9 +10,9 @@ const Header: React.FC<{ secondary?: boolean }> = () => {
   return (
     <>
       <div className="border-b-2 cursor-pointer" onClick={() => navigate('/')} onKeyDown={() => navigate('/')}>
-        <InfiniteSlider gap={0} duration={40} durationOnHover={8}>
+        <InfiniteSlider gap={0} duration={50} durationOnHover={8}>
           {username ? (
-            <h1 className="text-4xl">{username}·5525·年度报告·</h1>
+            <h1 className="text-4xl">{username}·5525·年度报告·{username}·5525·年度报告·</h1>
           ) : (
             <h1 className="text-4xl">Replay 5525·年度报告·Replay 5525·年度报告·</h1>
           )}

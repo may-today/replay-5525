@@ -92,7 +92,7 @@ const RequestSongsStat: React.FC<{ focus: boolean }> = ({ focus }) => {
                 <span>在</span>
                 <ConcertTitle className="text-report-large" concert={data.top1RequestSongConcertList[0]} />
                 <span>第一次听到</span>
-                <span className="text-report-large">《{data.top1RequestSong}》</span>
+                <div className="text-report-large text-right">《{data.top1RequestSong}》</div>
               </div>
               <div>
                 <span>并今年在随机曲目中听到</span>

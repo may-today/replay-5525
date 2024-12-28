@@ -47,7 +47,7 @@ const Submit: React.FC<{ currentStep: 'base' | 'concert'; setCurrentStep: (step:
           </label>
         </div>
       </div>
-      <div className="flex justify-end gap-2 p-3 overflow-y-auto border-t-2">
+      <div className="shrink-0 flex items-center justify-end gap-2 h-20 px-3 overflow-y-auto border-t-2">
         {currentStep === 'concert' && (
           <div
             className={clsx([
@@ -62,7 +62,7 @@ const Submit: React.FC<{ currentStep: 'base' | 'concert'; setCurrentStep: (step:
               }
             }}
           >
-            <ArrowLeft />
+            <ArrowLeft strokeWidth={1.5} />
           </div>
         )}
         <button
@@ -84,7 +84,7 @@ const Submit: React.FC<{ currentStep: 'base' | 'concert'; setCurrentStep: (step:
           <span>
             {currentStep === 'base' ? '下一步' : '生成观演报告'}
           </span>
-          <ArrowRight />
+          <ArrowRight strokeWidth={1.5} />
         </button>
       </div>
       <Toaster />
@@ -143,11 +143,10 @@ const ThanksListDrawer = () => {
         <article className="px-4 pb-8 leading-normal max-h-[50vh] overflow-y-auto">
           <p className="my-4">
             「五月天 5525 年度报告」为粉丝作品，不代表相信音乐行为和立场。该报告由{' '}
-            {/* biome-ignore lint/a11y/noBlankTarget: <explanation> */}
             <a className="underline" href="https://ddiu.io" target="_blank">
               Diu
             </a>{' '}
-            制作，也离不开各位五迷老师的协助和支持。
+            制作并在小红书宣发。制作的过程离不开各位五迷老师的协助和支持。
           </p>
           <p className="my-4">以下是特别感谢名单：</p>
           <ul className="list-disc list-inside">
@@ -157,14 +156,13 @@ const ThanksListDrawer = () => {
                 className="underline"
                 href="https://docs.google.com/spreadsheets/d/1pvDc5SmF6Rsw2chkiZkNn6I4JJDleRVLb5yOKAbm8Ck"
                 target="_blank"
-                rel="noreferrer"
               >
                 「五月天MayDay演唱會歌單」
               </a>{' '}
               表格；
             </li>
             <li>
-              感谢 开开心心开心果、RingoMango、顽固的老徐🥕、椰子热、圈圈圆圆圆圈圈、蜡笔阿信🥕、与山河同寐🥕、狼啊狼几西纯路人狼 等老师在直播编码期间的灵感提供；
+              感谢 开开心心开心果、RingoMango、顽固的老徐🥕、椰子热、圈圈圆圆圆圈圈、蜡笔阿信🥕、与山河同寐🥕、狼啊狼几西纯路人狼 等老师在直播编码期间提供的被采纳的灵感；
             </li>
             <li>专辑及嘉宾图片来自互联网</li>
             <li>Talking 来自网络录音，由讯飞转录生成</li>
@@ -173,11 +171,11 @@ const ThanksListDrawer = () => {
           <ul className="list-disc list-inside">
             <li>
               源代码：
-              <a className="underline" href="https://github.com/may-today/5525-replay" target="_blank" rel="noreferrer">
+              <a className="underline" href="https://github.com/may-today/5525-replay" target="_blank">
                 may-today/5525-replay
               </a>
             </li>
-            <li>字体：思源宋体</li>
+            <li>字体：思源宋体 | <a className="underline" href="https://chinese-font.netlify.app/zh-cn/" target="_blank">中文网字计划</a></li>
           </ul>
         </article>
       </DrawerContent>

@@ -19,6 +19,7 @@ const BaseInformationForm = () => {
             'text-xl font-bold',
             'focus:outline-none focus:ring-0 focus:border-black',
           ])}
+          maxLength={20}
           onChange={(e) => setUsername(e.target.value)}
           value={username}
         />

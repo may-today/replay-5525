@@ -83,7 +83,7 @@ const SpecialEventStat: React.FC<{ focus: boolean }> = ({ focus }) => {
   console.log('SpecialEventStat', data)
 
   return (
-    <div className="p-4">
+    <div className="p-4 pb-8">
       <div className="text-report-normal mb-8">你参加过的每一场<br />一定都很特别：</div>
       <AnimatedGroup preset="blur-slide">
         {Object.entries(data.listenedSpecialEventMap).map(([date, events], index) => (
@@ -113,6 +113,7 @@ const SpecialEventStat: React.FC<{ focus: boolean }> = ({ focus }) => {
             )}
           </div>
         ))}
+        <div className="mt-8 text-center opacity-30 text-sm">还有更多故事，等你续写</div>
       </AnimatedGroup>
     </div>
   )
