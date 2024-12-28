@@ -13,6 +13,7 @@ import RainStat, { shouldShowRainStat } from '~/components/reports/RainStat'
 import GuestStat from '~/components/reports/GuestStat'
 import RequestSongsStat from '~/components/reports/RequestSongsStat'
 import EncoreSongStat from '~/components/reports/EncoreSongStat'
+import SpecialEventStat, { shouldShowSpecialEventStat } from '~/components/reports/SpecialEventStat'
 
 const Report: React.FC = () => {
   const username = useAtomValue(usernameAtom)
@@ -57,6 +58,7 @@ const Report: React.FC = () => {
     GuestStat,
     RequestSongsStat,
     EncoreSongStat,
+    SpecialEventStat: shouldShowSpecialEventStat(selectedConcertDetails) ? SpecialEventStat : null,
   }
 
   return (

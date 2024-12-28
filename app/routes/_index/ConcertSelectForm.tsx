@@ -11,11 +11,12 @@ const ConcertSelectForm = () => {
   const setSelectedConcertDate = useSetAtom(setSelectedConcertDateAtom)
 
   return (
-    <div className="flex-1 flex flex-col gap-4 p-4 pb-24 overflow-y-auto">
-      <ConcertSelectDebugPanel data={selectedConcertDateTypeMap} />
+    <div className="flex-1 flex flex-col gap-2 py-6 px-4 pb-24 overflow-y-auto">
+      {/* <ConcertSelectDebugPanel data={selectedConcertDateTypeMap} /> */}
+      <h2 className="text-xl font-bold mb-4">选择你去过的场次和座位：</h2>
       {Object.entries(cityConcertGroupList).map(([city, concerts]) => (
         <div key={city}>
-          <h2 className="text-2xl font-bold py-4 px-2">{city}</h2>
+          <h2 className="text-2xl font-bold py-4 text-center">{city}</h2>
           <div className="grid grid-cols-2 gap-4">
             {concerts.map((concert) => (
               <ConcertSelectItem
@@ -59,7 +60,7 @@ const ConcertSelectItem: React.FC<{
       <PopoverTrigger>
         <div
           className={clsx([
-            'border-2 border-black px-4 h-12 rounded-full cursor-pointer',
+            'border-2 border-black px-2 sm:px-4 h-12 rounded-full cursor-pointer',
             'flex items-center justify-between',
             selected && 'bg-black text-white',
             selected ? 'hover:bg-gray-700' : 'hover:bg-black/30',
@@ -69,7 +70,7 @@ const ConcertSelectItem: React.FC<{
             D{concert.cityIndex}# {concert.date.replace(/20\d{2}\./, '')}
           </span>
           {selected && (
-            <span className={clsx(['px-2 py-1 rounded-full text-sm', 'border border-dashed border-white'])}>
+            <span className={clsx(['shrink-0 px-1.5 sm:px-2 py-1 rounded-full text-sm', 'border border-dashed border-white'])}>
               {getConcertSelectType(selected)}
             </span>
           )}
