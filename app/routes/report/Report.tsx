@@ -15,6 +15,7 @@ import RequestSongsStat from '~/components/reports/RequestSongsStat'
 import EncoreSongStat from '~/components/reports/EncoreSongStat'
 import SpecialEventStat, { shouldShowSpecialEventStat } from '~/components/reports/SpecialEventStat'
 import TalkingStat, { shouldShowTalkingStat } from '~/components/reports/TalkingStat'
+import Ending from './Ending'
 
 const Report: React.FC = () => {
   const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
@@ -60,6 +61,7 @@ const Report: React.FC = () => {
     EncoreSongStat,
     SpecialEventStat: shouldShowSpecialEventStat(selectedConcertDetails) ? SpecialEventStat : null,
     TalkingStat: shouldShowTalkingStat(selectedConcertDetails, selectedConcertDateTypeMap) ? TalkingStat : null,
+    Ending,
   }
 
   return (
@@ -77,8 +79,8 @@ const Report: React.FC = () => {
             ))}
         </div>
       </div>
-      <div className="shrink-0 flex items-center justify-end gap-2 p-3 border-t-2">
-        {selectedSnap !== 0 && (
+      <div className="shrink-0 flex items-center justify-end gap-2 h-20 px-3 border-t-2">
+        {selectedSnap !== 0 && selectedSnap !== snapCount - 1 && (
           <button
             type="button"
             className={clsx([
@@ -102,8 +104,13 @@ const Report: React.FC = () => {
             onClick={scrollNext}
           >
             <span>下一页</span>
-            <ArrowRight />
+            <ArrowRight strokeWidth={1.5} />
           </button>
+        )}
+        {selectedSnap === snapCount - 1 && (
+          <div className="w-full text-center text-sm transition-opacity opacity-20 hover:opacity-50">
+            Made by Diu
+          </div>
         )}
       </div>
     </div>
