@@ -1,3 +1,4 @@
+import { memo, useMemo } from 'react'
 import clsx from 'clsx'
 import { useAtomValue } from 'jotai'
 import { AnimatedNumber } from '~/components/ui/animated-number'
@@ -62,7 +63,7 @@ const getPageData = (selectedConcertDetails: Concert[]) => {
 
 const RequestSongsStat: React.FC<{ focus: boolean }> = ({ focus }) => {
   const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
-  const data = getPageData(selectedConcertDetails)
+  const data = useMemo(() => getPageData(selectedConcertDetails), [selectedConcertDetails])
   console.log('RequestSongsStat', data)
 
   const animValue = useFocusValueMap(focus, () => ({
@@ -99,12 +100,14 @@ const RequestSongsStat: React.FC<{ focus: boolean }> = ({ focus }) => {
                 <span>次，是专属于你的点歌 top1</span>
               </div>
             </div>
-            { data.topRequestSongs.length > 1 && (
+            {data.topRequestSongs.length > 1 && (
               <div className="text-report-normal">
                 <span>除此之外，</span>
-                {data.topRequestSongs.filter((song) => song !== data.top1RequestSong).map((song) => (
-                  <span key={song}>《{song}》</span>
-                ))}
+                {data.topRequestSongs
+                  .filter((song) => song !== data.top1RequestSong)
+                  .map((song) => (
+                    <span key={song}>《{song}》</span>
+                  ))}
                 <span>也并列成为你的点歌 top1</span>
               </div>
             )}
@@ -142,4 +145,4 @@ const RequestSongsStat: React.FC<{ focus: boolean }> = ({ focus }) => {
   )
 }
 
-export default RequestSongsStat
+export default memo(RequestSongsStat)

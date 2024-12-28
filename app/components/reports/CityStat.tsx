@@ -1,3 +1,4 @@
+import { memo, useMemo } from 'react'
 import clsx from 'clsx'
 import { useAtomValue } from 'jotai'
 import { InfiniteSlider } from '~/components/ui/infinite-slider'
@@ -62,7 +63,10 @@ const CityStat: React.FC<{
 }> = ({ focus }) => {
   const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
   const selectedCoord = useAtomValue(selectedCoordAtom)
-  const data = getPageData(selectedConcertDetails, selectedCoord)
+  const data = useMemo(
+    () => getPageData(selectedConcertDetails, selectedCoord),
+    [selectedConcertDetails, selectedCoord]
+  )
   console.log('CityStat', data)
 
   const animValue = useFocusValueMap(focus, () => ({
@@ -147,4 +151,4 @@ const getDistance = ([lat1, lng1]: [number, number], [lat2, lng2]: [number, numb
   return s
 }
 
-export default CityStat
+export default memo(CityStat)

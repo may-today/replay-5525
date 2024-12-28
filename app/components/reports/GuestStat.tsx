@@ -1,8 +1,9 @@
+import { memo, useMemo } from 'react'
 import clsx from 'clsx'
 import { useAtomValue } from 'jotai'
 import { InfiniteSlider } from '~/components/ui/infinite-slider'
 import { AnimatedNumber } from '~/components/ui/animated-number'
-import { selectedConcertDetailsAtom, selectedCoordAtom } from '~/stores/app'
+import { selectedConcertDetailsAtom } from '~/stores/app'
 import { concertListMap } from '~/lib/data'
 import { useFocusValueMap } from '~/hooks/useFocus'
 import type { Concert } from '~/data/types'
@@ -49,7 +50,7 @@ const GuestStat: React.FC<{
   focus: boolean
 }> = ({ focus }) => {
   const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
-  const data = getPageData(selectedConcertDetails)
+  const data = useMemo(() => getPageData(selectedConcertDetails), [selectedConcertDetails])
   console.log('GuestStat', data)
 
   const animValue = useFocusValueMap(focus, () => ({
@@ -106,4 +107,4 @@ const GuestStat: React.FC<{
   )
 }
 
-export default GuestStat
+export default memo(GuestStat)

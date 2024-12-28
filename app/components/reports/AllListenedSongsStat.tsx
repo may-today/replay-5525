@@ -1,3 +1,4 @@
+import { memo, useMemo } from 'react'
 import { useAtomValue } from 'jotai'
 import { selectedConcertDetailsAtom } from '~/stores/app'
 import type { Concert } from '~/data/types'
@@ -31,7 +32,7 @@ const getPageData = (selectedConcertDetails: Concert[]) => {
 
 const AllListenedSongsStat: React.FC<{ focus: boolean }> = ({ focus }) => {
   const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
-  const data = getPageData(selectedConcertDetails)
+  const data = useMemo(() => getPageData(selectedConcertDetails), [selectedConcertDetails])
   console.log('AllListenedSongsStat', data)
 
   const animValue = useFocusValueMap(focus, () => ({
@@ -54,16 +55,12 @@ const AllListenedSongsStat: React.FC<{ focus: boolean }> = ({ focus }) => {
       <div className="absolute bottom-4 left-0 right-0 opacity-85">
         <InfiniteSlider reverse className="mb-4">
           {albumImgList.slice(0, 5).map((img) => {
-            return (
-              <img key={img} src={img} alt="album" className="w-32" />
-            )
+            return <img key={img} src={img} alt="album" className="w-32" />
           })}
         </InfiniteSlider>
         <InfiniteSlider>
           {albumImgList.slice(5).map((img) => {
-            return (
-              <img key={img} src={img} alt="album" className="w-32" />
-            )
+            return <img key={img} src={img} alt="album" className="w-32" />
           })}
         </InfiniteSlider>
       </div>
@@ -71,4 +68,4 @@ const AllListenedSongsStat: React.FC<{ focus: boolean }> = ({ focus }) => {
   )
 }
 
-export default AllListenedSongsStat
+export default memo(AllListenedSongsStat)

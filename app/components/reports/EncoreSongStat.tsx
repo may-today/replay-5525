@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import clsx from 'clsx'
 import { useAtomValue } from 'jotai'
 import { AnimatedNumber } from '~/components/ui/animated-number'
@@ -58,7 +58,7 @@ const getPageData = (selectedConcertDetails: Concert[]) => {
 
 const EncoreSongStat: React.FC<{ focus: boolean }> = ({ focus }) => {
   const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
-  const data = getPageData(selectedConcertDetails)
+  const data = useMemo(() => getPageData(selectedConcertDetails), [selectedConcertDetails])
   const animListenedEncoreSongListLength = useFocusValue(focus, () => data.listenedEncoreSongList.length)
   const animListenedBallColorAmountMapLength = useFocusValue(
     focus,
@@ -113,28 +113,28 @@ const EncoreSongStat: React.FC<{ focus: boolean }> = ({ focus }) => {
   )
 }
 
-const ListenedBallGroup: React.FC<{ listenedBallColorAmountMap: Record<string, number> }> = memo(
-  ({ listenedBallColorAmountMap }) => {
-    return (
-      <AnimatedGroup className="flex flex-wrap gap-4 my-8" preset="scale">
-        {Object.entries(listenedBallColorAmountMap).map(([colorName, amount]) => {
-          return (
-            <div
-              key={colorName}
-              className={clsx(['relative w-12 h-12 rounded-md border-2'])}
-              style={{
-                backgroundColor: (ballColorMap as Record<string, string>)[colorName],
-              }}
-            >
-              <div className={clsx(['absolute -top-3 -right-3 px-3 py-1 bg-black text-white rounded-full'])}>
-                {amount}
-              </div>
+const ListenedBallGroup: React.FC<{ listenedBallColorAmountMap: Record<string, number> }> = ({
+  listenedBallColorAmountMap,
+}) => {
+  return (
+    <AnimatedGroup className="flex flex-wrap gap-4 my-8" preset="scale">
+      {Object.entries(listenedBallColorAmountMap).map(([colorName, amount]) => {
+        return (
+          <div
+            key={colorName}
+            className={clsx(['relative w-12 h-12 rounded-md border-2'])}
+            style={{
+              backgroundColor: (ballColorMap as Record<string, string>)[colorName],
+            }}
+          >
+            <div className={clsx(['absolute -top-3 -right-3 px-3 py-1 bg-black text-white rounded-full'])}>
+              {amount}
             </div>
-          )
-        })}
-      </AnimatedGroup>
-    )
-  }
-)
+          </div>
+        )
+      })}
+    </AnimatedGroup>
+  )
+}
 
-export default EncoreSongStat
+export default memo(EncoreSongStat)

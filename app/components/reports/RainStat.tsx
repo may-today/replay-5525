@@ -1,9 +1,10 @@
+import { memo, useMemo } from 'react'
 import { useAtomValue } from 'jotai'
+import { Rain } from 'react-rainfall'
 import { selectedConcertDateTypeMapAtom, selectedConcertDetailsAtom } from '~/stores/app'
 import type { Concert, ConcertSelectType } from '~/data/types'
 import { useFocusValueMap } from '~/hooks/useFocus'
 import { AnimatedNumber } from '~/components/ui/animated-number'
-import { Rain } from 'react-rainfall'
 
 const rainDateList = ['2024.04.30', '2024.05.04', '2024.08.04', '2024.10.04']
 
@@ -37,7 +38,10 @@ const getPageData = (
 const RainStat: React.FC<{ focus: boolean }> = ({ focus }) => {
   const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
   const selectedConcertDateTypeMap = useAtomValue(selectedConcertDateTypeMapAtom)
-  const data = getPageData(selectedConcertDetails, selectedConcertDateTypeMap)
+  const data = useMemo(
+    () => getPageData(selectedConcertDetails, selectedConcertDateTypeMap),
+    [selectedConcertDetails, selectedConcertDateTypeMap]
+  )
   console.log('RainStat', data)
 
   const animValue = useFocusValueMap(focus, () => ({
@@ -66,4 +70,4 @@ const RainStat: React.FC<{ focus: boolean }> = ({ focus }) => {
   )
 }
 
-export default RainStat
+export default memo(RainStat)
