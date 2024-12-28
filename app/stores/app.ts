@@ -1,10 +1,11 @@
 import { atom } from 'jotai'
+import { atomWithStorage } from 'jotai/utils'
 import { concertListMap } from '~/lib/data'
 import { geoCoordMap } from '~/data/geoCoord'
 import type { Concert, ConcertSelectType } from '~/data/types'
 
-export const usernameAtom = atom<string>('')
-export const selectedProvinceAtom = atom<string>('none')
+export const usernameAtom = atomWithStorage<string>('replay5525:username', '')
+export const selectedProvinceAtom = atomWithStorage<string>('replay5525:selectedProvince', 'none')
 export const selectedCoordAtom = atom<[number, number] | null>((get) => {
   const province = get(selectedProvinceAtom)
   return geoCoordMap[province] || null
