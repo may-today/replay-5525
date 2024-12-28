@@ -20,6 +20,9 @@
         "noExplicitAny": "off",
         "noAssignInExpressions": "off"
       },
+      "complexity": {
+        "noForEach": "off"
+      },
       "style": {
         "noNonNullAssertion": "off"
       }

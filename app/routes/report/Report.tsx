@@ -14,6 +14,7 @@ import GuestStat from '~/components/reports/GuestStat'
 import RequestSongsStat from '~/components/reports/RequestSongsStat'
 import EncoreSongStat from '~/components/reports/EncoreSongStat'
 import SpecialEventStat, { shouldShowSpecialEventStat } from '~/components/reports/SpecialEventStat'
+import TalkingStat, { shouldShowTalkingStat } from '~/components/reports/TalkingStat'
 
 const Report: React.FC = () => {
   const username = useAtomValue(usernameAtom)
@@ -59,6 +60,7 @@ const Report: React.FC = () => {
     RequestSongsStat,
     EncoreSongStat,
     SpecialEventStat: shouldShowSpecialEventStat(selectedConcertDetails) ? SpecialEventStat : null,
+    TalkingStat: shouldShowTalkingStat(selectedConcertDetails, selectedConcertDateTypeMap) ? TalkingStat : null,
   }
 
   return (
@@ -76,13 +78,13 @@ const Report: React.FC = () => {
             ))}
         </div>
       </div>
-      <div className="flex items-center justify-end gap-2 p-2 border-t-2">
+      <div className="shrink-0 flex items-center justify-end gap-2 p-2 border-t-2">
         {selectedSnap !== 0 && (
           <button
             type="button"
             className={clsx([
               'flex justify-center items-center',
-              'py-3 px-4 rounded-full cursor-pointer text-lg',
+              'h-14 px-4 rounded-full cursor-pointer text-lg',
               'border-2 border-black hover:bg-black hover:text-white',
             ])}
             onClick={scrollPrev}
@@ -95,7 +97,7 @@ const Report: React.FC = () => {
             type="button"
             className={clsx([
               'flex justify-center items-center gap-2',
-              'py-3 px-4 rounded-full cursor-pointer text-lg',
+              'h-14 px-4 rounded-full cursor-pointer text-lg',
               'border-2 border-black hover:bg-black hover:text-white',
             ])}
             onClick={scrollNext}
