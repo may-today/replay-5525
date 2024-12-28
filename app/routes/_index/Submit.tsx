@@ -24,7 +24,9 @@ const Submit: React.FC<{ currentStep: 'base' | 'concert'; setCurrentStep: (step:
       return
     }
     if (selected) {
-      navigate('/report')
+      navigate('/loading', {
+        viewTransition: true,
+      })
     } else {
       toast({
         title: '请查收隐私声明和感谢名单',
@@ -45,12 +47,12 @@ const Submit: React.FC<{ currentStep: 'base' | 'concert'; setCurrentStep: (step:
           </label>
         </div>
       </div>
-      <div className="flex justify-end gap-4 p-4 overflow-y-auto border-t-2">
+      <div className="flex justify-end gap-2 p-3 overflow-y-auto border-t-2">
         {currentStep === 'concert' && (
           <div
             className={clsx([
               'flex justify-center items-center',
-              'py-4 px-6 rounded-full cursor-pointer text-lg',
+              'h-14 px-6 rounded-full cursor-pointer text-lg',
               'border-2 border-black hover:bg-gray-700',
             ])}
             onClick={() => setCurrentStep('base')}
@@ -67,7 +69,7 @@ const Submit: React.FC<{ currentStep: 'base' | 'concert'; setCurrentStep: (step:
           type="button"
           className={clsx([
             'flex shrink-0 justify-center items-center gap-2',
-            'py-4 px-6 rounded-full cursor-pointer text-lg',
+            'h-14 px-6 rounded-full cursor-pointer text-lg',
             'border-2 border-black bg-black text-white hover:bg-gray-700',
             'disabled:opacity-50 disabled:cursor-not-allowed',
           ])}
@@ -164,7 +166,8 @@ const ThanksListDrawer = () => {
             <li>
               感谢 开开心心开心果、RingoMango、顽固的老徐🥕、椰子热、圈圈圆圆圆圈圈、蜡笔阿信🥕、与山河同寐🥕、狼啊狼几西纯路人狼 等老师在直播编码期间的灵感提供；
             </li>
-            <li>感谢 xxx 老师整理的 5525 演唱会 Talking。</li>
+            <li>专辑及嘉宾图片来自互联网</li>
+            <li>Talking 来自网络录音，由讯飞转录生成</li>
           </ul>
           <p className="my-4">技术信息：</p>
           <ul className="list-disc list-inside">

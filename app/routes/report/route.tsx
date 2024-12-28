@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 import { useEffect } from 'react'
 import { useAtomValue } from 'jotai'
-import { useNavigate } from "react-router"
+import { useNavigate } from 'react-router'
 import { selectedConcertDateTypeMapAtom } from '~/stores/app'
-import Header from '~/components/Header'
+import Header from './Header'
 import Report from './Report'
 
 export default function ReportPage() {

@@ -26,7 +26,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="bg-background select-none">
+      <body className="bg-background select-none h-full">
+        <canvas id="gradient-canvas" data-transition-in className="fixed inset-0 w-full h-full -z-10" />
         {children}
         <ScrollRestoration />
         <Scripts />

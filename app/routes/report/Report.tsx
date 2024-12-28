@@ -5,7 +5,7 @@ import { useAtomValue } from 'jotai'
 import useEmblaCarousel from 'embla-carousel-react'
 import type { EmblaCarouselType } from 'embla-carousel'
 import { Freeze } from 'react-freeze'
-import { usernameAtom, selectedConcertDateTypeMapAtom, selectedConcertDetailsAtom } from '~/stores/app'
+import { selectedConcertDateTypeMapAtom, selectedConcertDetailsAtom } from '~/stores/app'
 import AttendedStat from '~/components/reports/AttendedStat'
 import AllListenedSongsStat from '~/components/reports/AllListenedSongsStat'
 import CityStat from '~/components/reports/CityStat'
@@ -17,7 +17,6 @@ import SpecialEventStat, { shouldShowSpecialEventStat } from '~/components/repor
 import TalkingStat, { shouldShowTalkingStat } from '~/components/reports/TalkingStat'
 
 const Report: React.FC = () => {
-  const username = useAtomValue(usernameAtom)
   const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
   const selectedConcertDateTypeMap = useAtomValue(selectedConcertDateTypeMapAtom)
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -65,7 +64,7 @@ const Report: React.FC = () => {
 
   return (
     <div className="flex-1 flex flex-col overflow-y-auto">
-      <div className="flex-1 overflow-hidden bg-black" ref={emblaRef}>
+      <div className="flex-1 overflow-hidden bg-black1" ref={emblaRef}>
         <div className="flex h-full">
           {Object.entries(slides)
             .filter(([_, Slide]) => !!Slide)
@@ -78,7 +77,7 @@ const Report: React.FC = () => {
             ))}
         </div>
       </div>
-      <div className="shrink-0 flex items-center justify-end gap-2 p-2 border-t-2">
+      <div className="shrink-0 flex items-center justify-end gap-2 p-3 border-t-2">
         {selectedSnap !== 0 && (
           <button
             type="button"
