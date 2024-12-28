@@ -5,17 +5,19 @@ import { useAtomValue } from 'jotai'
 import useEmblaCarousel from 'embla-carousel-react'
 import type { EmblaCarouselType } from 'embla-carousel'
 import { Freeze } from 'react-freeze'
-import { usernameAtom } from '~/stores/app'
+import { usernameAtom, selectedConcertDateTypeMapAtom, selectedConcertDetailsAtom } from '~/stores/app'
 import AttendedStat from '~/components/reports/AttendedStat'
 import AllListenedSongsStat from '~/components/reports/AllListenedSongsStat'
 import CityStat from '~/components/reports/CityStat'
-import RainStat from '~/components/reports/RainStat'
+import RainStat, { shouldShowRainStat } from '~/components/reports/RainStat'
 import GuestStat from '~/components/reports/GuestStat'
 import RequestSongsStat from '~/components/reports/RequestSongsStat'
 import EncoreSongStat from '~/components/reports/EncoreSongStat'
 
 const Report: React.FC = () => {
   const username = useAtomValue(usernameAtom)
+  const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
+  const selectedConcertDateTypeMap = useAtomValue(selectedConcertDateTypeMapAtom)
   const [emblaRef, emblaApi] = useEmblaCarousel({
     watchDrag: false,
   })
@@ -36,7 +38,7 @@ const Report: React.FC = () => {
 
   useEffect(() => {
     if (!emblaApi) return undefined
-    
+
     const onSelect = () => {
       setCurrentIndex(emblaApi.selectedScrollSnap())
     }
@@ -51,8 +53,7 @@ const Report: React.FC = () => {
     AttendedStat,
     AllListenedSongsStat,
     CityStat,
-    // TODO: hide when not attended
-    RainStat,
+    RainStat: shouldShowRainStat(selectedConcertDetails, selectedConcertDateTypeMap) ? RainStat : null,
     GuestStat,
     RequestSongsStat,
     EncoreSongStat,
@@ -62,13 +63,15 @@ const Report: React.FC = () => {
     <div className="flex-1 flex flex-col overflow-y-auto">
       <div className="flex-1 overflow-hidden bg-black" ref={emblaRef}>
         <div className="flex h-full">
-          {Object.entries(slides).map(([key, Slide], index) => (
-            <div className="carousel-item" key={key}>
-              <Freeze freeze={Math.abs(index - currentIndex) > 1}>
-                <Slide focus={index === currentIndex} />
-              </Freeze>
-            </div>
-          ))}
+          {Object.entries(slides)
+            .filter(([_, Slide]) => !!Slide)
+            .map(([key, Slide], index) => (
+              <div className="carousel-item" key={key}>
+                <Freeze freeze={Math.abs(index - currentIndex) > 1}>
+                  {Slide && <Slide focus={index === currentIndex} />}
+                </Freeze>
+              </div>
+            ))}
         </div>
       </div>
       <div className="flex items-center justify-end gap-2 p-2 border-t-2">

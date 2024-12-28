@@ -5,21 +5,30 @@ import { useFocusValueMap } from '~/hooks/useFocus'
 import { AnimatedNumber } from '~/components/ui/animated-number'
 import { Rain } from 'react-rainfall'
 
-const rainDateList = [
-  '2024.04.30',
-  '2024.05.04',
-  '2024.08.04',
-  '2024.10.04',
-]
+const rainDateList = ['2024.04.30', '2024.05.04', '2024.08.04', '2024.10.04']
 
-const getPageData = (selectedConcertDetails: Concert[], selectedConcertDateTypeMap: Record<string, ConcertSelectType>) => {
-  const listenedRainAmount = selectedConcertDetails.filter((concert) => {
-    if (rainDateList.includes(concert.date)) {
-      return concert.city === '香港' || selectedConcertDateTypeMap[concert.date] !== 'seats'
-    }
-    return false
-  }).length
-  
+export const shouldShowRainStat = (
+  selectedConcertDetails: Concert[],
+  selectedConcertDateTypeMap: Record<string, ConcertSelectType>
+) => {
+  return selectedConcertDetails.some((concert) => isRainConcert(concert, selectedConcertDateTypeMap))
+}
+
+const isRainConcert = (concert: Concert, selectedConcertDateTypeMap: Record<string, ConcertSelectType>) => {
+  return (
+    rainDateList.includes(concert.date) &&
+    (concert.city === '香港' || selectedConcertDateTypeMap[concert.date] !== 'seats')
+  )
+}
+
+const getPageData = (
+  selectedConcertDetails: Concert[],
+  selectedConcertDateTypeMap: Record<string, ConcertSelectType>
+) => {
+  const listenedRainAmount = selectedConcertDetails.filter((concert) =>
+    isRainConcert(concert, selectedConcertDateTypeMap)
+  ).length
+
   return {
     listenedRainAmount,
   }
@@ -40,9 +49,7 @@ const RainStat: React.FC<{ focus: boolean }> = ({ focus }) => {
       <div className="absolute inset-0">
         <Rain numDrops={120} dropletColor="rgb(60, 60, 60)" dropletOpacity={0.8} />
       </div>
-      <div className="text-report-normal text-right">
-        「当夏日的雨开始怒吼」
-      </div>
+      <div className="text-report-normal text-right">「当夏日的雨开始怒吼」</div>
       <div className="text-report-normal">今年，你陪五月天淋了</div>
       <div className="text-report-normal">
         <AnimatedNumber className="text-report-large" value={animValue.listenedRainAmount} />
@@ -54,9 +61,7 @@ const RainStat: React.FC<{ focus: boolean }> = ({ focus }) => {
           <span className="text-report-large">暴雨全勤</span>
         </div>
       )}
-      <div className="text-report-normal">
-        又浪漫又疯狂
-      </div>
+      <div className="text-report-normal">又浪漫又疯狂</div>
     </div>
   )
 }
