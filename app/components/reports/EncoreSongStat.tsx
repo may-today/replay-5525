@@ -91,7 +91,7 @@ const EncoreSongStat: React.FC<{ focus: boolean }> = ({ focus }) => {
                 </div>
               ))}
             </div>
-            <div className="text-report-normal">都听过它</div>
+            <div className="text-report-normal">都陪你结束这一夜</div>
           </div>
         </>
       )}

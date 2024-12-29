@@ -674,10 +674,9 @@
     "guestSongList": [],
     "encoreSongList": [
       "雌雄同體",
-      "聽不到",
-      "OAOA"
+      "聽不到"
     ],
-    "endingSong": "OAOA",
+    "endingSong": "聽不到",
     "ballColorList": ["purple"]
   },
   {
