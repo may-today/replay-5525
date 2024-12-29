@@ -4,11 +4,11 @@ import type { Route } from './+types/root'
 import stylesheet from './app.css?url'
 
 export const links: Route.LinksFunction = () => [
-  {
-    rel: 'stylesheet',
-    href: 'https://chinese-fonts-cdn.deno.dev/packages/syst/dist/SourceHanSerifCN/result.css',
-    crossOrigin: 'anonymous',
-  },
+  // {
+  //   rel: 'stylesheet',
+  //   href: 'https://chinese-fonts-cdn.deno.dev/packages/syst/dist/SourceHanSerifCN/result.css',
+  //   crossOrigin: 'anonymous',
+  // },
   { rel: 'stylesheet', href: stylesheet },
 ]
 
