@@ -39,8 +39,9 @@ const getPageData = (selectedConcertDetails: Concert[], selectedCoord: [number, 
   const fullAttendedCityList = Object.entries(allListenedAmountMap)
     .filter(([city, amount]) => amount === allCityAmountMap[city])
     .map(([city]) => city)
-  const listenedCityDistance = getListenedCityDistance(selectedCoord, allListenedCityList)
-    .sort((a, b) => b.distance - a.distance)
+  const listenedCityDistance = getListenedCityDistance(selectedCoord, allListenedCityList).sort(
+    (a, b) => b.distance - a.distance
+  )
   const homeCity = listenedCityDistance.filter((city) => city.distance < 150)
   const allDistance = listenedCityDistance.reduce((acc, city) => acc + city.distance, 0) * 2
   return {
@@ -134,7 +135,7 @@ const CityStat: React.FC<{
   )
 }
 
-const getDistance = ([lat1, lng1]: [number, number], [lat2, lng2]: [number, number]) => {
+const getDistance = ([lng1, lat1]: [number, number], [lng2, lat2]: [number, number]) => {
   const radLat1 = (lat1 * Math.PI) / 180.0
   const radLat2 = (lat2 * Math.PI) / 180.0
   const a = radLat1 - radLat2
