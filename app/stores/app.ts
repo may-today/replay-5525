@@ -12,10 +12,13 @@ export const selectedCoordAtom = atom<[number, number] | null>((get) => {
 })
 export const selectedConcertDateTypeMapAtom = atom<Record<string, ConcertSelectType>>({})
 export const selectedConcertDetailsAtom = atom<Concert[]>((get) => {
-  return Array.from(Object.keys(get(selectedConcertDateTypeMapAtom))).map((date) => {
-    const concert = concertListMap[date]
-    return concert
-  })
+  return Array.from(Object.keys(get(selectedConcertDateTypeMapAtom))).map((date) => concertListMap[date])
+})
+export const selectedNonOutdoorConcertDetailsAtom = atom<Concert[]>((get) => {
+  const selectTypeMap = get(selectedConcertDateTypeMapAtom)
+  return Object.keys(selectTypeMap)
+    .filter((date) => selectTypeMap[date] !== 'outdoor')
+    .map((date) => concertListMap[date])
 })
 
 export const setSelectedConcertDateAtom = atom(null, (get, set, date: string, selectType: ConcertSelectType) => {
@@ -30,10 +33,13 @@ export const setSelectedConcertDateAtom = atom(null, (get, set, date: string, se
 
   // sort by date
   const sortedDates = Object.keys(newData).sort((a, b) => parseDateToNumber(a) - parseDateToNumber(b))
-  const sortedMap = sortedDates.reduce((acc, date) => {
-    acc[date] = newData[date]
-    return acc
-  }, {} as Record<string, ConcertSelectType>)
+  const sortedMap = sortedDates.reduce(
+    (acc, date) => {
+      acc[date] = newData[date]
+      return acc
+    },
+    {} as Record<string, ConcertSelectType>
+  )
 
   set(selectedConcertDateTypeMapAtom, sortedMap)
 })

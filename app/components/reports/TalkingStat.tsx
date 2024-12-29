@@ -1,7 +1,7 @@
 import { memo, useMemo } from 'react'
 import { useAtomValue } from 'jotai'
 import { Carousel, CarouselContent, CarouselItem } from '~/components/ui/carousel'
-import { selectedConcertDetailsAtom, selectedConcertDateTypeMapAtom } from '~/stores/app'
+import { selectedNonOutdoorConcertDetailsAtom, selectedConcertDateTypeMapAtom } from '~/stores/app'
 import {} from '~/components/ui/text-effect'
 import { concertListMap } from '~/lib/data'
 import type { Concert, ConcertSelectType } from '~/data/types'
@@ -102,22 +102,17 @@ export const shouldShowTalkingStat = (
     .some((concert) => allTalkingMap[concert.date])
 }
 
-const getPageData = (
-  selectedConcertDetails: Concert[],
-  selectedConcertDateTypeMap: Record<string, ConcertSelectType>
-) => {
-  const talkingMap = selectedConcertDetails
-    .filter((concert) => selectedConcertDateTypeMap[concert.date] !== 'outdoor')
-    .reduce(
-      (acc, concert) => {
-        const talking = allTalkingMap[concert.date]
-        if (talking) {
-          acc[concert.date] = talking
-        }
-        return acc
-      },
-      {} as Record<string, string[]>
-    )
+const getPageData = (selectedConcertDetails: Concert[]) => {
+  const talkingMap = selectedConcertDetails.reduce(
+    (acc, concert) => {
+      const talking = allTalkingMap[concert.date]
+      if (talking) {
+        acc[concert.date] = talking
+      }
+      return acc
+    },
+    {} as Record<string, string[]>
+  )
 
   return {
     talkingMap,
@@ -125,12 +120,8 @@ const getPageData = (
 }
 
 const TalkingStat: React.FC<{ focus: boolean }> = ({ focus }) => {
-  const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
-  const selectedConcertDateTypeMap = useAtomValue(selectedConcertDateTypeMapAtom)
-  const data = useMemo(
-    () => getPageData(selectedConcertDetails, selectedConcertDateTypeMap),
-    [selectedConcertDetails, selectedConcertDateTypeMap]
-  )
+  const selectedNonOutdoorConcertDetails = useAtomValue(selectedNonOutdoorConcertDetailsAtom)
+  const data = useMemo(() => getPageData(selectedNonOutdoorConcertDetails), [selectedNonOutdoorConcertDetails])
   console.log('TalkingStat', data)
 
   return (

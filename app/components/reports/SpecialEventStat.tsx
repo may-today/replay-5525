@@ -2,7 +2,7 @@ import { memo, useMemo } from 'react'
 import clsx from 'clsx'
 import { useAtomValue } from 'jotai'
 import { AnimatedGroup } from '~/components/ui/animated-group'
-import { selectedConcertDetailsAtom } from '~/stores/app'
+import { selectedNonOutdoorConcertDetailsAtom } from '~/stores/app'
 import { concertListMap } from '~/lib/data'
 import type { Concert } from '~/data/types'
 import ConcertTitle from '../ConcertTitle'
@@ -36,7 +36,7 @@ const specialEventList = [
   [['2024.07.06'], '吉他信《听不到》'],
   [['2024.07.07'], 'MDSZ 唯一三安;默契的一专点歌;上飞机告别'],
   [['2024.08.03'], '开场前的大合唱;唱了又唱的OAOA'],
-  [['2024.08.04'], '暴雨中的《透露》;唯一的三颜色大球'],
+  [['2024.08.04'], '暴雨中的《透露》;唯一的三颜色大球;散场后的安可'],
   [['2024.07.31', '2024.08.02', '2024.08.03', '2024.08.04'], '天空中烟花幸福地爆炸;石拔缺席的 MDTY'],
   [['2024.09.06'], 'Ella合唱《五月天》;命运+顽固'],
   [['2024.09.07'], '停不下来的人浪'],
@@ -78,8 +78,8 @@ const getPageData = (selectedConcertDetails: Concert[]) => {
 }
 
 const SpecialEventStat: React.FC<{ focus: boolean }> = ({ focus }) => {
-  const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
-  const data = useMemo(() => getPageData(selectedConcertDetails), [selectedConcertDetails])
+  const selectedNonOutdoorConcertDetails = useAtomValue(selectedNonOutdoorConcertDetailsAtom)
+  const data = useMemo(() => getPageData(selectedNonOutdoorConcertDetails), [selectedNonOutdoorConcertDetails])
   console.log('SpecialEventStat', data)
 
   return (
