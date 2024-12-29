@@ -63,4 +63,33 @@ body {
   .text-report-large {
     @apply text-4xl font-bold mx-1 first:ml-0;
   }
+  .stamp {
+    --r: 6px;
+    padding: calc(2*var(--r));
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.1));
+    background: 
+      radial-gradient(var(--r),#0000 98%,#fff) round
+      calc(-1.5*var(--r)) calc(-1.5*var(--r)) /calc(3*var(--r)) calc(3*var(--r)),
+      linear-gradient(#fff 0 0)  no-repeat
+      50%/calc(100% - 3*var(--r)) calc(100% - 3*var(--r));
+  }
+  .share-image {
+    @apply relative aspect-[3/4] bg-zinc-50;
+    background-image:
+    radial-gradient(at 10% 0%, var(--gradient-color-1) 0px, transparent 50%),
+    radial-gradient(at 130% 36%, var(--gradient-color-2) 0px, transparent 50%),
+    radial-gradient(at 32% 110%, var(--gradient-color-3) 0px, transparent 50%),
+    radial-gradient(at 88% 82%, var(--gradient-color-4) 0px, transparent 50%);
+  }
+  .share-image::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 600px;
+    mix-blend-mode: soft-light;
+    filter: contrast(170%) brightness(1000%);
+  }
 }

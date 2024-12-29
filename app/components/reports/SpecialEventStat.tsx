@@ -85,7 +85,33 @@ const SpecialEventStat: React.FC<{ focus: boolean }> = ({ focus }) => {
   return (
     <div className="p-4 pb-8">
       <div className="text-report-normal mb-8">你参加过的每一场<br />一定都很特别：</div>
-      <AnimatedGroup preset="blur-slide">
+      <AnimatedGroup
+        preset="blur-slide"
+        variants={{
+          container: {
+            // hidden: { opacity: 0 },
+            visible: {
+              // opacity: 1,
+              transition: {
+                staggerChildren: 0.3,
+              },
+            },
+          },
+          item: {
+            hidden: { opacity: 0, y: 40, filter: 'blur(4px)' },
+            visible: {
+              opacity: 1,
+              y: 0,
+              filter: 'blur(0px)',
+              transition: {
+                duration: 1.2,
+                type: 'spring',
+                bounce: 0.3,
+              },
+            },
+          },
+        }}
+      >
         {Object.entries(data.listenedSpecialEventMap).map(([date, events], index) => (
           <div key={date}>
             <div className={clsx(['text-report-normal font-medium', index % 2 === 0 ? 'text-right' : 'text-left'])}>

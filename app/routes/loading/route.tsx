@@ -40,9 +40,10 @@ const setGradients = (accentColors: string[]) => {
     colors.push(colors[colors.length % accentColors.length])
   }
   const canvas = document.querySelector('#gradient-canvas') as HTMLElement
+  const body = document.body
   if (!canvas) return
   colors.forEach((color, index) => {
-    canvas.style.setProperty(`--gradient-color-${index + 1}`, color)
+    body.style.setProperty(`--gradient-color-${index + 1}`, color)
   })
 
   const gradient = new Gradient()

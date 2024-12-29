@@ -6,7 +6,7 @@ import { AnimatedGroup } from '~/components/ui/animated-group'
 import { selectedConcertDetailsAtom } from '~/stores/app'
 import { ballColorMap } from '~/data/ballColor'
 import type { Concert } from '~/data/types'
-import { useFocusValue } from '~/hooks/useFocus'
+import { useFocusValueMap } from '~/hooks/useFocus'
 import ConcertTitle from '../ConcertTitle'
 
 const getPageData = (selectedConcertDetails: Concert[]) => {
@@ -59,22 +59,21 @@ const getPageData = (selectedConcertDetails: Concert[]) => {
 const EncoreSongStat: React.FC<{ focus: boolean }> = ({ focus }) => {
   const selectedConcertDetails = useAtomValue(selectedConcertDetailsAtom)
   const data = useMemo(() => getPageData(selectedConcertDetails), [selectedConcertDetails])
-  const animListenedEncoreSongListLength = useFocusValue(focus, () => data.listenedEncoreSongList.length)
-  const animListenedBallColorAmountMapLength = useFocusValue(
-    focus,
-    () => Object.keys(data.listenedBallColorAmountMap).length
-  )
+  const animValue = useFocusValueMap(focus, () => ({
+    listenedEncoreSongListLength: data.listenedEncoreSongList.length,
+    listenedBallColorAmountMapLength: Object.keys(data.listenedBallColorAmountMap).length,
+  }))
 
   return (
     <div className="p-4">
       <div className="text-report-normal">
         <span>你今年一共听过</span>
-        <AnimatedNumber className="text-report-large" value={animListenedEncoreSongListLength} />
+        <AnimatedNumber className="text-report-large" value={animValue.listenedEncoreSongListLength} />
         <span>首安可随机曲目</span>
       </div>
       <div className="text-report-normal">
         <span>解锁安可大球颜色</span>
-        <AnimatedNumber className="text-report-large" value={animListenedBallColorAmountMapLength} />
+        <AnimatedNumber className="text-report-large" value={animValue.listenedBallColorAmountMapLength} />
         <span>/{Object.keys(ballColorMap).length}</span>
       </div>
       <ListenedBallGroup listenedBallColorAmountMap={data.listenedBallColorAmountMap} />

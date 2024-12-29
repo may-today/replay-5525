@@ -20,10 +20,7 @@ import Album9 from '~/assets/album/9.webp'
 const albumImgList = [Album1, Album2, Album3, Album4, Album5, Album6, Album7, Album8, Album8_2, Album9]
 
 const getPageData = (selectedConcertDetails: Concert[]) => {
-  const listenedAmount = selectedConcertDetails.reduce((acc, concert) => {
-    // 固定歌单（固定+一安）+ 点歌 + 嘉宾点歌 + 安可
-    return acc + 36 + concert.requestSongList.length + concert.guestSongList.length + concert.encoreSongList.length
-  }, 0)
+  const listenedAmount = getListenedAmount(selectedConcertDetails)
   return {
     listenedAmount,
     albumAmount: 9,
@@ -66,6 +63,13 @@ const AllListenedSongsStat: React.FC<{ focus: boolean }> = ({ focus }) => {
       </div>
     </div>
   )
+}
+
+export const getListenedAmount = (selectedConcertDetails: Concert[]) => {
+  return selectedConcertDetails.reduce((acc, concert) => {
+    // 固定歌单（固定+一安）+ 点歌 + 嘉宾点歌 + 安可
+    return acc + 36 + concert.requestSongList.length + concert.guestSongList.length + concert.encoreSongList.length
+  }, 0)
 }
 
 export default memo(AllListenedSongsStat)

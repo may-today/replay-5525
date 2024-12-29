@@ -17,7 +17,7 @@ export const shouldShowRainStat = (
   return selectedConcertDetails.some((concert) => isRainConcert(concert, selectedConcertDateTypeMap, 'all'))
 }
 
-const isRainConcert = (
+export const isRainConcert = (
   concert: Concert,
   selectedConcertDateTypeMap: Record<string, ConcertSelectType>,
   rainType: 'storm' | 'normal' | 'all'

@@ -26,7 +26,7 @@ const allRequestSongAmountMap = Object.fromEntries(
   ).sort(([, a], [, b]) => b - a)
 )
 
-const getPageData = (selectedConcertDetails: Concert[]) => {
+export const getPageData = (selectedConcertDetails: Concert[]) => {
   const listenedRequestSongListRaw = selectedConcertDetails.reduce((acc, concert) => {
     return acc.concat(concert.requestSongList)
   }, [] as string[])

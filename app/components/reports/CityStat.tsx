@@ -39,13 +39,7 @@ const getPageData = (selectedConcertDetails: Concert[], selectedCoord: [number, 
   const fullAttendedCityList = Object.entries(allListenedAmountMap)
     .filter(([city, amount]) => amount === allCityAmountMap[city])
     .map(([city]) => city)
-  const listenedCityDistance = allListenedCityList
-    .map((city) => {
-      return {
-        city,
-        distance: selectedCoord ? getDistance(selectedCoord, allCityCoordMap[city]) : 0,
-      }
-    })
+  const listenedCityDistance = getListenedCityDistance(selectedCoord, allListenedCityList)
     .sort((a, b) => b.distance - a.distance)
   const homeCity = listenedCityDistance.filter((city) => city.distance < 150)
   const allDistance = listenedCityDistance.reduce((acc, city) => acc + city.distance, 0) * 2
@@ -149,6 +143,17 @@ const getDistance = ([lat1, lng1]: [number, number], [lat2, lng2]: [number, numb
   s = s * 6378.137
   s = Math.round(s * 10000) / 10000
   return s
+}
+
+export const getListenedCityDistance = (selectedCoord: [number, number] | null, cityList: string[]) => {
+  return cityList
+    .map((city) => {
+      return {
+        city,
+        distance: selectedCoord ? getDistance(selectedCoord, allCityCoordMap[city]) : 0,
+      }
+    })
+    .sort((a, b) => b.distance - a.distance)
 }
 
 export default memo(CityStat)
