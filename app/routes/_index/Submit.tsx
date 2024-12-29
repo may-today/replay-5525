@@ -171,8 +171,8 @@ const ThanksListDrawer = () => {
           <ul className="list-disc list-inside">
             <li>
               源代码：
-              <a className="underline" href="https://github.com/may-today/5525-replay" target="_blank">
-                may-today/5525-replay
+              <a className="underline" href="https://github.com/may-today/replay-5525" target="_blank">
+                may-today/replay-5525
               </a>
             </li>
             <li>字体：思源宋体 | <a className="underline" href="https://chinese-font.netlify.app/zh-cn/" target="_blank">中文网字计划</a></li>
