@@ -2,7 +2,7 @@ import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration }
 
 import type { Route } from './+types/root'
 import stylesheet from './app.css?url'
-
+import "./assets/fonts/SourceHanSerifCN/result.css";
 export const links: Route.LinksFunction = () => [
   {
     rel: 'stylesheet',

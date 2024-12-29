@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "cross-env NODE_ENV=production react-router build",
+    "build:font": "cn-font-split -i ./app/assets/SourceHanSerifCN.ttf -o ./app/assets/fonts/SourceHanSerifCN",
+    "build": "bun run build:font && cross-env NODE_ENV=production react-router build",
     "dev": "react-router dev",
     "start": "cross-env NODE_ENV=production react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
@@ -22,6 +23,7 @@
     "@uidotdev/usehooks": "^2.4.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cn-font-split": "6.0.3",
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.5.1",
     "html-to-image": "^1.11.11",
