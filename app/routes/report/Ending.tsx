@@ -27,7 +27,9 @@ const Ending: React.FC<{ focus: boolean }> = ({ focus }) => {
     if (ref.current === null) {
       return
     }
-    toPng(ref.current, { cacheBust: true })
+    toPng(ref.current, {
+      cacheBust: true,
+    })
       .then((dataUrl) => {
         const link = document.createElement('a')
         link.download = 'replay-5525.png'
@@ -203,12 +205,12 @@ const ImageRender = forwardRef<HTMLDivElement>((_, ref) => {
     <>
       <div>
         <span>看过</span>
-        <span className="text-lg font-bold mx-1">{data.selectedDates.length}</span>
+        <span className="text-lg font-medium mx-1">{data.selectedDates.length}</span>
         <span>场</span>
         {data.lastConcertAmount > 0 && (
           <>
             <span>，解锁</span>
-            <span className="text-lg font-bold mx-1">{data.lastConcertAmount}</span>
+            <span className="text-lg font-medium mx-1">{data.lastConcertAmount}</span>
             <span>次尾场</span>
           </>
         )}
@@ -217,7 +219,7 @@ const ImageRender = forwardRef<HTMLDivElement>((_, ref) => {
         {data.mostCommonType && (
           <>
             <span>最爱</span>
-            <span className="text-lg font-bold mx-1">{data.mostCommonType}</span>
+            <span className="text-lg font-medium mx-1">{data.mostCommonType}</span>
           </>
         )}
       </div>
@@ -228,14 +230,14 @@ const ImageRender = forwardRef<HTMLDivElement>((_, ref) => {
       {data.allListenedCityList.length > 0 && (
         <>
           <span>去过</span>
-          <span className="text-lg font-bold mx-1">{data.allListenedCityList.length}</span>
+          <span className="text-lg font-medium mx-1">{data.allListenedCityList.length}</span>
           <span>个城市</span>
         </>
       )}
       {data.allListenedTotalDistance > 100 && (
         <>
           <span>，奔波</span>
-          <span className="text-lg font-bold mx-1">{~~data.allListenedTotalDistance}</span>
+          <span className="text-lg font-medium mx-1">{~~data.allListenedTotalDistance}</span>
           <span>公里</span>
         </>
       )}
@@ -244,7 +246,7 @@ const ImageRender = forwardRef<HTMLDivElement>((_, ref) => {
   const ListenedSongsMiniStat = () => (
     <div>
       <span>听过</span>
-      <span className="text-lg font-bold mx-1">{data.listenedAmount}</span>
+      <span className="text-lg font-medium mx-1">{data.listenedAmount}</span>
       <span>首现场</span>
     </div>
   )
@@ -253,12 +255,12 @@ const ImageRender = forwardRef<HTMLDivElement>((_, ref) => {
       {data.listenedRainAmount > 0 && (
         <>
           <span>淋过</span>
-          <span className="text-lg font-bold mx-1">{data.listenedRainAmount}</span>
+          <span className="text-lg font-medium mx-1">{data.listenedRainAmount}</span>
           <span>场雨</span>
           {data.listenedStormRainAmount > 0 && (
             <>
               <span>，其中</span>
-              <span className="text-lg font-bold mx-1">{data.listenedStormRainAmount}</span>
+              <span className="text-lg font-medium mx-1">{data.listenedStormRainAmount}</span>
               <span>场暴雨</span>
             </>
           )}
@@ -271,7 +273,7 @@ const ImageRender = forwardRef<HTMLDivElement>((_, ref) => {
       {data.allListenedGuestConcertList.length > 0 && (
         <>
           <span>看过</span>
-          <span className="text-lg font-bold mx-1">{data.allListenedGuestConcertList.length}</span>
+          <span className="text-lg font-medium mx-1">{data.allListenedGuestConcertList.length}</span>
           <span>次嘉宾</span>
         </>
       )}
@@ -281,13 +283,13 @@ const ImageRender = forwardRef<HTMLDivElement>((_, ref) => {
     <>
       <div>
         <span>听过点歌</span>
-        <span className="text-lg font-bold mx-1">{data.requestSongsData.listenedRequestSongList.length}</span>
+        <span className="text-lg font-medium mx-1">{data.requestSongsData.listenedRequestSongList.length}</span>
         <span>首</span>
       </div>
       {data.requestSongsData.top1RequestSongConcertList.length > 1 && (
         <div>
           <span>点歌Top1</span>
-          <span className="text-lg font-bold mx-1">《{data.requestSongsData.top1RequestSong}》</span>
+          <span className="text-lg font-medium mx-1">《{data.requestSongsData.top1RequestSong}》</span>
         </div>
       )}
     </>
@@ -315,8 +317,8 @@ const ImageRender = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <div className="share-image w-[300px] flex flex-col" ref={ref}>
       <header className="px-4 pt-3 pb-2 border-b border-dashed">
-        <div className="font-semibold leading-relaxed">{username ? `${username} 的` : '我的'}</div>
-        <div className="text-xl font-semibold leading-relaxed">5525年度报告</div>
+        <div className="leading-relaxed">{username ? `${username} 的` : '我的'}</div>
+        <div className="text-xl font-medium leading-relaxed">5525年度报告</div>
       </header>
       <main className="flex-1 px-4 py-2 border-b border-dashed">
         <AttendMiniStat />
