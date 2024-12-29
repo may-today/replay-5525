@@ -7,10 +7,6 @@ import ConcertSelectForm from './ConcertSelectForm'
 import Submit from './Submit'
 import IndexBg from '~/components/IndexBg'
 
-export function meta(_: MetaArgs) {
-  return [{ title: 'Replay 5525' }, { name: 'description', content: 'Welcome to React Router!' }]
-}
-
 export default function HomePage() {
   const [currentStep, setCurrentStep] = useState<'base' | 'concert'>('base')
   return (

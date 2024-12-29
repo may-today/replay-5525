@@ -76,7 +76,7 @@ const CityStat: React.FC<{
   }))
 
   return (
-    <div className="relative h-full py-4">
+    <div className="relative h-full py-4 w-full overflow-hidden">
       <InfiniteSlider className="rotate-6 mt-12 w-[150%] ml-[-25%]" reverse>
         {Object.keys(allCityAmountMap).map((city) => {
           return (
@@ -116,7 +116,7 @@ const CityStat: React.FC<{
         )}
         {selectedCoord && data.listenedCityDistance.length > 1 && (
           <div className="text-report-normal">
-            <span>最远的城市为</span>
+            <span>最远去过</span>
             <AnimatedNumber className="text-report-large" value={animValue.top1Distance} />
             <span>公里外的</span>
             <span className="text-report-large">{data.listenedCityDistance[0].city}</span>

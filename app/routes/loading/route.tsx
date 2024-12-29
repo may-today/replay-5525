@@ -12,15 +12,23 @@ import type { Concert } from '~/data/types'
 
 // use encore ball colors from selected concert dates
 const getAccentColors = (selectedConcertDetails: Concert[]) => {
-  const listenedBallColorNameList = Array.from(
-    new Set(
-      selectedConcertDetails.reduce((acc, concert) => {
-        return acc.concat(concert.ballColorList)
-      }, [] as string[])
-    )
-  ).filter(Boolean)
-  const accentColors = listenedBallColorNameList.map((color) => (ballColorMapLight as Record<string, string>)[color])
-  return accentColors
+  const listenedBallColorListRaw = selectedConcertDetails
+    .reduce((acc, concert) => {
+      return acc.concat(concert.ballColorList)
+    }, [] as string[])
+    .filter(Boolean)
+  const listenedBallColorAmountMap = Object.fromEntries(
+    Object.entries(
+      listenedBallColorListRaw.reduce(
+        (acc, color) => {
+          acc[color] = (acc[color] || 0) + 1
+          return acc
+        },
+        {} as Record<string, number>
+      )
+    ).sort(([, a], [, b]) => b - a)
+  )
+  return Object.keys(listenedBallColorAmountMap).map((color) => (ballColorMapLight as Record<string, string>)[color])
 }
 
 const setGradients = (accentColors: string[]) => {
